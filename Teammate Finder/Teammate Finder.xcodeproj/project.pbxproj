@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		41122ABBE96CB032618AB4D3 /* Pods_Teammate_FinderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C8E3AEFCA4F2F0D4050BA1 /* Pods_Teammate_FinderUITests.framework */; };
 		5606FA231ED8BE9900351D28 /* testPhoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5606FA221ED8BE9900351D28 /* testPhoto.jpg */; };
 		560AC7D21ED7B132003ACE51 /* NewPost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 560AC7D11ED7B132003ACE51 /* NewPost.storyboard */; };
 		560AC7D41ED7B150003ACE51 /* NewPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AC7D31ED7B150003ACE51 /* NewPostController.swift */; };
@@ -24,6 +23,7 @@
 		56FE8B921EC3A68700F8DCF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56FE8B901EC3A68700F8DCF6 /* LaunchScreen.storyboard */; };
 		56FE8B9D1EC3A68700F8DCF6 /* Teammate_FinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FE8B9C1EC3A68700F8DCF6 /* Teammate_FinderTests.swift */; };
 		56FE8BA81EC3A68700F8DCF6 /* Teammate_FinderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FE8BA71EC3A68700F8DCF6 /* Teammate_FinderUITests.swift */; };
+		852A6D2FC60A13DD7191B612 /* Pods_Teammate_Finder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED713EC5115E0D0D3498D94C /* Pods_Teammate_Finder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14650D1C446E66AA1D1174B2 /* Pods-Teammate Finder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teammate Finder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teammate Finder/Pods-Teammate Finder.debug.xcconfig"; sourceTree = "<group>"; };
 		5606FA221ED8BE9900351D28 /* testPhoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testPhoto.jpg; sourceTree = "<group>"; };
 		560AC7D11ED7B132003ACE51 /* NewPost.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewPost.storyboard; sourceTree = "<group>"; };
 		560AC7D31ED7B150003ACE51 /* NewPostController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostController.swift; sourceTree = "<group>"; };
@@ -67,8 +68,8 @@
 		56FE8BA71EC3A68700F8DCF6 /* Teammate_FinderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teammate_FinderUITests.swift; sourceTree = "<group>"; };
 		56FE8BA91EC3A68700F8DCF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65C8E3AEFCA4F2F0D4050BA1 /* Pods_Teammate_FinderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teammate_FinderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		79146E1569513D8EC9417811 /* Pods-Teammate FinderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teammate FinderUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teammate FinderUITests/Pods-Teammate FinderUITests.release.xcconfig"; sourceTree = "<group>"; };
-		FCD8C4CB4D421A482BC1CFD1 /* Pods-Teammate FinderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teammate FinderUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teammate FinderUITests/Pods-Teammate FinderUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		65E16EF2EE2026897428782C /* Pods-Teammate Finder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teammate Finder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teammate Finder/Pods-Teammate Finder.release.xcconfig"; sourceTree = "<group>"; };
+		ED713EC5115E0D0D3498D94C /* Pods_Teammate_Finder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teammate_Finder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				852A6D2FC60A13DD7191B612 /* Pods_Teammate_Finder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +92,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41122ABBE96CB032618AB4D3 /* Pods_Teammate_FinderUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				65C8E3AEFCA4F2F0D4050BA1 /* Pods_Teammate_FinderUITests.framework */,
+				ED713EC5115E0D0D3498D94C /* Pods_Teammate_Finder.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -194,8 +196,8 @@
 		9C15883F08C31C22EBC062AE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FCD8C4CB4D421A482BC1CFD1 /* Pods-Teammate FinderUITests.debug.xcconfig */,
-				79146E1569513D8EC9417811 /* Pods-Teammate FinderUITests.release.xcconfig */,
+				14650D1C446E66AA1D1174B2 /* Pods-Teammate Finder.debug.xcconfig */,
+				65E16EF2EE2026897428782C /* Pods-Teammate Finder.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -207,9 +209,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 56FE8BAC1EC3A68700F8DCF6 /* Build configuration list for PBXNativeTarget "Teammate Finder" */;
 			buildPhases = (
+				EAB2FE9F67DD4F2D7D51DF6A /* [CP] Check Pods Manifest.lock */,
 				56FE8B801EC3A68700F8DCF6 /* Sources */,
 				56FE8B811EC3A68700F8DCF6 /* Frameworks */,
 				56FE8B821EC3A68700F8DCF6 /* Resources */,
+				23E3BB0B84372B3CF308D141 /* [CP] Embed Pods Frameworks */,
+				A09FE5B397C65028342667E7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -242,12 +247,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 56FE8BB21EC3A68700F8DCF6 /* Build configuration list for PBXNativeTarget "Teammate FinderUITests" */;
 			buildPhases = (
-				9F6AC66EE7FBE1C5D7E9F34C /* [CP] Check Pods Manifest.lock */,
 				56FE8B9F1EC3A68700F8DCF6 /* Sources */,
 				56FE8BA01EC3A68700F8DCF6 /* Frameworks */,
 				56FE8BA11EC3A68700F8DCF6 /* Resources */,
-				7CFD6667BF4209DAC376604E /* [CP] Embed Pods Frameworks */,
-				0030A075A545892F4BC8EBB0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -337,22 +339,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0030A075A545892F4BC8EBB0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Teammate FinderUITests/Pods-Teammate FinderUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7CFD6667BF4209DAC376604E /* [CP] Embed Pods Frameworks */ = {
+		23E3BB0B84372B3CF308D141 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -364,10 +351,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Teammate FinderUITests/Pods-Teammate FinderUITests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Teammate Finder/Pods-Teammate Finder-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9F6AC66EE7FBE1C5D7E9F34C /* [CP] Check Pods Manifest.lock */ = {
+		A09FE5B397C65028342667E7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Teammate Finder/Pods-Teammate Finder-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EAB2FE9F67DD4F2D7D51DF6A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -545,6 +547,7 @@
 		};
 		56FE8BAD1EC3A68700F8DCF6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14650D1C446E66AA1D1174B2 /* Pods-Teammate Finder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
@@ -558,6 +561,7 @@
 		};
 		56FE8BAE1EC3A68700F8DCF6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65E16EF2EE2026897428782C /* Pods-Teammate Finder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
@@ -599,7 +603,6 @@
 		};
 		56FE8BB31EC3A68700F8DCF6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FCD8C4CB4D421A482BC1CFD1 /* Pods-Teammate FinderUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "Teammate FinderUITests/Info.plist";
@@ -613,7 +616,6 @@
 		};
 		56FE8BB41EC3A68700F8DCF6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79146E1569513D8EC9417811 /* Pods-Teammate FinderUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "Teammate FinderUITests/Info.plist";
