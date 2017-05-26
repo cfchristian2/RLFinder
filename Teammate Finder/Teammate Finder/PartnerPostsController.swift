@@ -39,7 +39,8 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.automaticallyAdjustsScrollViewInsets = false
+        automaticallyAdjustsScrollViewInsets = false
+        navigationController?.navigationBar.isHidden = true
         
         // TEST
         bronzePosts["Post1"] = "I NEED PARTNER"
@@ -238,11 +239,11 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         
         let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "NewPostController")
         //self.present(vc, animated: true, completion: nil)
-        self.navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func movePostButton() {
-        UIView.animate(withDuration: 0.4) { () -> Void in
+        UIView.animate(withDuration: 0.3) { () -> Void in
             let superViewHeight = self.floatingButtonView.superview!.bounds.size.height
             let buttonHeight = self.floatingButtonView.frame.size.height
             
