@@ -39,6 +39,8 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.automaticallyAdjustsScrollViewInsets = false
+        
         // TEST
         bronzePosts["Post1"] = "I NEED PARTNER"
         bronzePosts["Post2"] = "I NEED PARTNER"
@@ -234,8 +236,9 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     func toCreatePost() {
         let storyboard: UIStoryboard = UIStoryboard(name: "NewPost", bundle: nil)
         
-        let vc: UINavigationController = storyboard.instantiateViewController(withIdentifier: "NewPostNavigation") as! UINavigationController
-        self.present(vc, animated: true, completion: nil)
+        let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "NewPostController")
+        //self.present(vc, animated: true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func movePostButton() {

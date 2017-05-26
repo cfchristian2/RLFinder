@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5606FA231ED8BE9900351D28 /* testPhoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5606FA221ED8BE9900351D28 /* testPhoto.jpg */; };
 		560AC7D21ED7B132003ACE51 /* NewPost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 560AC7D11ED7B132003ACE51 /* NewPost.storyboard */; };
 		560AC7D41ED7B150003ACE51 /* NewPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AC7D31ED7B150003ACE51 /* NewPostController.swift */; };
 		560D43C01ED2709A00D464A6 /* PartnerPostHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560D43BF1ED2709A00D464A6 /* PartnerPostHeader.swift */; };
 		562C11901ECFB32B0072A5C2 /* PartnerPosts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 562C118F1ECFB32B0072A5C2 /* PartnerPosts.storyboard */; };
 		562C11921ECFB4740072A5C2 /* PartnerPostsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562C11911ECFB4740072A5C2 /* PartnerPostsController.swift */; };
 		569818EA1ED4A981001EF9F8 /* PartnerPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569818E91ED4A981001EF9F8 /* PartnerPost.swift */; };
-		56C4040B1ED652BF006AC7E4 /* testPhoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 56C4040A1ED652BF006AC7E4 /* testPhoto.jpg */; };
 		56C4040D1ED652F6006AC7E4 /* TestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C4040C1ED652F6006AC7E4 /* TestCell.swift */; };
 		56FE8B881EC3A68700F8DCF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FE8B871EC3A68700F8DCF6 /* AppDelegate.swift */; };
 		56FE8B8A1EC3A68700F8DCF6 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FE8B891EC3A68700F8DCF6 /* WelcomeController.swift */; };
@@ -42,13 +42,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5606FA221ED8BE9900351D28 /* testPhoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testPhoto.jpg; sourceTree = "<group>"; };
 		560AC7D11ED7B132003ACE51 /* NewPost.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewPost.storyboard; sourceTree = "<group>"; };
 		560AC7D31ED7B150003ACE51 /* NewPostController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostController.swift; sourceTree = "<group>"; };
 		560D43BF1ED2709A00D464A6 /* PartnerPostHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerPostHeader.swift; sourceTree = "<group>"; };
 		562C118F1ECFB32B0072A5C2 /* PartnerPosts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PartnerPosts.storyboard; sourceTree = "<group>"; };
 		562C11911ECFB4740072A5C2 /* PartnerPostsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerPostsController.swift; sourceTree = "<group>"; };
 		569818E91ED4A981001EF9F8 /* PartnerPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerPost.swift; sourceTree = "<group>"; };
-		56C4040A1ED652BF006AC7E4 /* testPhoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = testPhoto.jpg; path = ../../../../Desktop/testPhoto.jpg; sourceTree = "<group>"; };
 		56C4040C1ED652F6006AC7E4 /* TestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCell.swift; sourceTree = "<group>"; };
 		56FE8B841EC3A68700F8DCF6 /* Teammate Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Teammate Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56FE8B871EC3A68700F8DCF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 				56FE8B871EC3A68700F8DCF6 /* AppDelegate.swift */,
 				56FE8B8E1EC3A68700F8DCF6 /* Assets.xcassets */,
 				56FE8B901EC3A68700F8DCF6 /* LaunchScreen.storyboard */,
-				56C4040A1ED652BF006AC7E4 /* testPhoto.jpg */,
+				5606FA221ED8BE9900351D28 /* testPhoto.jpg */,
 				56FE8B931EC3A68700F8DCF6 /* Info.plist */,
 			);
 			path = "Teammate Finder";
@@ -282,10 +282,10 @@
 			files = (
 				56FE8B921EC3A68700F8DCF6 /* LaunchScreen.storyboard in Resources */,
 				560AC7D21ED7B132003ACE51 /* NewPost.storyboard in Resources */,
-				56C4040B1ED652BF006AC7E4 /* testPhoto.jpg in Resources */,
 				562C11901ECFB32B0072A5C2 /* PartnerPosts.storyboard in Resources */,
 				56FE8B8F1EC3A68700F8DCF6 /* Assets.xcassets in Resources */,
 				56FE8B8D1EC3A68700F8DCF6 /* Welcome.storyboard in Resources */,
+				5606FA231ED8BE9900351D28 /* testPhoto.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
