@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Welcome Controller-->
+        <!--Delegate-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="WelcomeController" customModule="Teammate_Finder" customModuleProvider="target" sceneMemberID="viewController">
@@ -59,6 +59,12 @@
                                     <segue destination="35Y-17-pOJ" kind="show" identifier="toUser" id="eLq-dU-eZd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jqR-zR-r3r" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="128" y="261" width="118" height="30"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="bw9-NL-SDO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -71,6 +77,7 @@
                             <constraint firstItem="Pv1-d1-GKf" firstAttribute="top" secondItem="wLV-MM-oKN" secondAttribute="bottom" constant="-12" id="Jdb-Tb-cE7"/>
                             <constraint firstItem="CeU-7x-A0S" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="29" id="L0j-WR-qnL"/>
                             <constraint firstItem="Pv1-d1-GKf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LWK-KU-deR"/>
+                            <constraint firstItem="jqR-zR-r3r" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="112" id="Ya8-US-9BH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6Jw-z7-CY2" secondAttribute="trailing" constant="139" id="ZJp-Mg-ueY"/>
                             <constraint firstAttribute="trailing" secondItem="Pv1-d1-GKf" secondAttribute="trailing" id="aTO-iJ-nRe"/>
                             <constraint firstItem="ZNq-qI-Tzj" firstAttribute="top" secondItem="CeU-7x-A0S" secondAttribute="bottom" constant="199.5" id="bOE-As-VBQ"/>
@@ -78,6 +85,8 @@
                             <constraint firstAttribute="trailingMargin" secondItem="wLV-MM-oKN" secondAttribute="trailing" constant="50" id="dVb-vt-Yuq"/>
                             <constraint firstItem="ZNq-qI-Tzj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="62" id="e6e-xg-ef7"/>
                             <constraint firstItem="LX1-Oy-5zn" firstAttribute="top" secondItem="ZNq-qI-Tzj" secondAttribute="bottom" constant="8" id="kJO-OI-Hm6"/>
+                            <constraint firstItem="ZNq-qI-Tzj" firstAttribute="top" secondItem="jqR-zR-r3r" secondAttribute="bottom" constant="38" id="nYc-qo-cww"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jqR-zR-r3r" secondAttribute="trailing" constant="113" id="obu-uT-tBo"/>
                             <constraint firstItem="LX1-Oy-5zn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="62" id="rIJ-pU-lTA"/>
                             <constraint firstItem="CeU-7x-A0S" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="52" id="yNl-pM-Bsu"/>
                         </constraints>

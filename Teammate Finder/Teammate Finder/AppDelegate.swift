@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import FireBase
+import Firebase
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,10 +17,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         UIApplication.shared.statusBarStyle = .lightContent
         FIRApp.configure()
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        if FBSDKAccessToken.current() != nil {
+            
+            print("\nAlready signed in on facebook, logging into Firebase\n")
+            
+            let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+            
+            FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+                if error != nil {
+                    print(error.debugDescription)
+                    return
+                }
+            }
+        }
+        
         return true
+    }
+    
+    func applicationDidBecomeActive(application: UIApplication) {
+        //App activation code
+        FBSDKAppEvents.activateApp()
+        
+        if FBSDKAccessToken.current() != nil {
+            
+            print("\nAlready signed in on facebook, logging into Firebase\n")
+            
+            let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+            
+            FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+                if error != nil {
+                    print(error.debugDescription)
+                    return
+                }
+            }
+        }
+    }
+    
+    let facebookReadPermissions = ["public_profile", "email", "user_friends"]
+    //Some other options: "user_about_me", "user_birthday", "user_hometown", "user_likes", "user_interests", "user_photos", "friends_photos", "friends_hometown", "friends_location", "friends_education_history"
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        let handled: Bool = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        // Add any custom logic here.
+        return handled
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -30,6 +74,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        if FIRAuth.auth()?.currentUser != nil {
+            print("Logging out because app entered background")
+            let firebaseAuth = FIRAuth.auth()
+            do {
+                try firebaseAuth?.signOut()
+            } catch let signOutError as NSError {
+                print ("Error signing out: %@", signOutError)
+            }
+        }
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

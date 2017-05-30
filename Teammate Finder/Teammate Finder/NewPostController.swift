@@ -13,7 +13,12 @@ class NewPostController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = false
-
+        navigationController?.navigationBar.shadowImage = UIImage()
+        //navigationController?.navigationBar.backgroundColor = UIColor.white
+        //navigationController?.navigationBar.barTintColor = UIColor(red: 7/255, green: 7/255, blue: 7/255, alpha: 1)
+        navigationController?.navigationBar.barStyle = .blackTranslucent
+        navigationController?.navigationBar.tintColor = UIColor.white
+        view.backgroundColor = UIColor(red: 40/255, green: 40/255, blue: 40/255, alpha: 1)
     }
 
     override func didReceiveMemoryWarning() {

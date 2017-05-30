@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+import Firebase
 
-class WelcomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class WelcomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, FBSDKLoginButtonDelegate {
 
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var picker: UIPickerView!
     let systems = ["PS4", "Xbox", "PC"]
     var currentRow = 0
+    let loginButton = FBSDKLoginButton()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +25,66 @@ class WelcomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         picker.delegate = self
         picker.dataSource = self
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if (FBSDKAccessToken.current() != nil) {
+            let storyboard: UIStoryboard = UIStoryboard(name: "PartnerPosts", bundle: nil)
+            let vc: UINavigationController = storyboard.instantiateViewController(withIdentifier: "PostsNavigation") as! UINavigationController
+            self.present(vc, animated: true, completion: nil)
+        }
+        
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error?) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        
+        if result.isCancelled {
+            return
+        }
+        
+        let ref = FIRDatabase.database().reference()
+        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        
+        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+            if error != nil {
+                print(error.debugDescription)
+                return
+            }
+            
+            let userId = (FIRAuth.auth()?.currentUser?.uid)!
+            ref.child("Login").observeSingleEvent(of: .value, with: {(snapshot) in
+                
+                if snapshot.hasChild(userId) {
+                    // Already has account, go to posts
+                }
+                else {
+                    // Potentially go to a user edit page?
+                    // For now, every user new or existing will go to posts page
+                }
+                
+                let storyboard: UIStoryboard = UIStoryboard(name: "PartnerPosts", bundle: nil)
+                let vc: UINavigationController = storyboard.instantiateViewController(withIdentifier: "PostsNavigation") as! UINavigationController
+                self.present(vc, animated: true, completion: nil)
+            })
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        let firebaseAuth = FIRAuth.auth()
+        do {
+            try firebaseAuth?.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
     }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

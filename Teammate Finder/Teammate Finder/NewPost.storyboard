@@ -25,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="-908" y="26"/>
         </scene>
-        <!--New Post Controller-->
+        <!--Make a new post-->
         <scene sceneID="EH5-B7-RwC">
             <objects>
                 <viewController storyboardIdentifier="NewPostController" id="pJ2-aM-pNr" customClass="NewPostController" customModule="Teammate_Finder" customModuleProvider="target" sceneMemberID="viewController">
@@ -38,11 +38,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="g1n-SE-xS8"/>
+                    <navigationItem key="navigationItem" title="Make a new post" id="g1n-SE-xS8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dsw-bJ-dsw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6" y="26"/>
+            <point key="canvasLocation" x="-7.2000000000000002" y="25.637181409295355"/>
         </scene>
     </scenes>
 </document>
