@@ -22,9 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         if FBSDKAccessToken.current() != nil {
-            
-            print("\nAlready signed in on facebook, logging into Firebase\n")
-            
             let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
             
             FIRAuth.auth()?.signIn(with: credential) { (user, error) in
@@ -41,20 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(application: UIApplication) {
         //App activation code
         FBSDKAppEvents.activateApp()
-        
-        if FBSDKAccessToken.current() != nil {
-            
-            print("\nAlready signed in on facebook, logging into Firebase\n")
-            
-            let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-            
-            FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-                if error != nil {
-                    print(error.debugDescription)
-                    return
-                }
-            }
-        }
     }
     
     let facebookReadPermissions = ["public_profile", "email", "user_friends"]
@@ -72,11 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        
         if FIRAuth.auth()?.currentUser != nil {
-            print("Logging out because app entered background")
             let firebaseAuth = FIRAuth.auth()
             do {
                 try firebaseAuth?.signOut()
@@ -87,7 +66,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        if FBSDKAccessToken.current() != nil {
+            let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+            
+            FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+                if error != nil {
+                    print(error.debugDescription)
+                    return
+                }
+            }
+        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

@@ -8,17 +8,25 @@
 
 import UIKit
 
-class NewPostController: UIViewController {
-
+class NewPostController: UIViewController, UITextViewDelegate {
+    
+    @IBOutlet weak var barButtons: UISegmentedControl!
+    @IBOutlet weak var postBody: UITextView!
+    var hasEditedText = false
+    let placeholder = "Body of post"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.shadowImage = UIImage()
-        //navigationController?.navigationBar.backgroundColor = UIColor.white
-        //navigationController?.navigationBar.barTintColor = UIColor(red: 7/255, green: 7/255, blue: 7/255, alpha: 1)
         navigationController?.navigationBar.barStyle = .blackTranslucent
-        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.tintColor = .lightGray
         view.backgroundColor = UIColor(red: 40/255, green: 40/255, blue: 40/255, alpha: 1)
+        
+        postBody.delegate = self
+        self.automaticallyAdjustsScrollViewInsets = false
+        postBody.backgroundColor = UIColor(red: 40/255, green: 40/255, blue: 40/255, alpha: 1)
+        postBody.textColor = .lightGray
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,6 +39,44 @@ class NewPostController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
     
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        if textView.text == placeholder && textView.textColor == .lightGray {
+            textView.selectedRange = NSRange(location: 0, length: 0)
+        }
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.selectedRange = NSRange(location: 0, length: 0)
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.text.characters.count != 0 && textView.text.substring(from: textView.text.startIndex) == placeholder && textView.textColor == .lightGray {
+            textView.text = textView.text.substring(to: textView.text.startIndex)
+            textView.textColor = .white
+        } else if textView.text.characters.count == 0 {
+            textView.text = placeholder
+            textView.textColor = .lightGray
+            textView.selectedRange = NSRange(location: 0, length: 0)
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == "" {
+            textView.text = placeholder
+            textView.textColor = .lightGray
+        }
+        
+        textView.resignFirstResponder()
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text.characters.count > 0 && textView.text == placeholder && textView.textColor == .lightGray {
+            textView.text = ""
+            textView.textColor = .white
+        }
+        
+        return true
+    }
 
     /*
     // MARK: - Navigation

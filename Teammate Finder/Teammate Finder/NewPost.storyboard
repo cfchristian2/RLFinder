@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kBI-Oq-PbY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kBI-Oq-PbY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -36,13 +37,64 @@
                     <view key="view" contentMode="scaleToFill" id="I0x-as-7fl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Body of post" translatesAutoresizingMaskIntoConstraints="NO" id="PEc-CC-1Oz">
+                                <rect key="frame" x="0.0" y="265" width="375" height="144"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.80360243055555558" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hig-7U-uuC">
+                                <rect key="frame" x="51" y="160" width="274" height="29"/>
+                                <segments>
+                                    <segment title="" image="bronze3"/>
+                                    <segment title="" image="silver3"/>
+                                    <segment title="" image="gold3"/>
+                                    <segment title="" image="platinum3"/>
+                                    <segment title="" image="diamond3"/>
+                                    <segment title="" image="champion3"/>
+                                    <segment title="" image="gold3"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7DB-4B-hTC" customClass="XMSegmentedControl">
+                                <rect key="frame" x="51" y="213" width="274" height="30"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="PEc-CC-1Oz" secondAttribute="trailing" id="1yM-cI-o82"/>
+                            <constraint firstItem="5xF-zw-sJ9" firstAttribute="top" secondItem="7DB-4B-hTC" secondAttribute="bottom" constant="424" id="2K3-au-o80"/>
+                            <constraint firstItem="hig-7U-uuC" firstAttribute="top" secondItem="0Qd-SL-ons" secondAttribute="bottom" constant="96" id="SdQ-cX-NtZ"/>
+                            <constraint firstItem="hig-7U-uuC" firstAttribute="leading" secondItem="I0x-as-7fl" secondAttribute="leadingMargin" constant="35" id="UOQ-k2-7md"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hig-7U-uuC" secondAttribute="trailing" constant="34" id="bjg-lG-Pbs"/>
+                            <constraint firstItem="7DB-4B-hTC" firstAttribute="top" secondItem="hig-7U-uuC" secondAttribute="bottom" constant="25" id="eVd-Qw-F6x"/>
+                            <constraint firstItem="PEc-CC-1Oz" firstAttribute="leading" secondItem="I0x-as-7fl" secondAttribute="leading" id="eWV-Tj-Fb1"/>
+                            <constraint firstItem="7DB-4B-hTC" firstAttribute="leading" secondItem="I0x-as-7fl" secondAttribute="leadingMargin" constant="35" id="gDN-Cj-Fku"/>
+                            <constraint firstItem="5xF-zw-sJ9" firstAttribute="top" secondItem="PEc-CC-1Oz" secondAttribute="bottom" constant="258" id="h5b-e2-re6"/>
+                            <constraint firstItem="PEc-CC-1Oz" firstAttribute="top" secondItem="0Qd-SL-ons" secondAttribute="bottom" constant="201" id="jqK-sh-GKv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7DB-4B-hTC" secondAttribute="trailing" constant="34" id="qWa-Vo-0TO"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Make a new post" id="g1n-SE-xS8"/>
+                    <connections>
+                        <outlet property="barButtons" destination="hig-7U-uuC" id="lnI-Ke-lvw"/>
+                        <outlet property="postBody" destination="PEc-CC-1Oz" id="jtE-8S-2Bt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dsw-bJ-dsw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-7.2000000000000002" y="25.637181409295355"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bronze3" width="256" height="265"/>
+        <image name="champion3" width="256" height="265"/>
+        <image name="diamond3" width="256" height="265"/>
+        <image name="gold3" width="256" height="265"/>
+        <image name="platinum3" width="256" height="265"/>
+        <image name="silver3" width="256" height="265"/>
+    </resources>
 </document>

@@ -9,12 +9,14 @@
 //
 
 import UIKit
+import Firebase
 
 class PartnerPostsController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate{
     
     @IBOutlet weak var postsTable: UITableView!
     var platform: String!
     var username: String!
+    var ref: FIRDatabaseReference!
     
     // This storage will probably change once database is implemented
     var bronzePosts: Dictionary<String, Any> = [:]
@@ -41,6 +43,7 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         
         automaticallyAdjustsScrollViewInsets = false
         navigationController?.navigationBar.isHidden = true
+        ref = FIRDatabase.database().reference()
         
         // TEST
         bronzePosts["Post1"] = "I NEED PARTNER"
