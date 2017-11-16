@@ -9,6 +9,8 @@
 import UIKit
 
 class PartnerPost: UITableViewCell {
+    
+    var postId: String!
 
     override func awakeFromNib() {
         super.awakeFromNib()

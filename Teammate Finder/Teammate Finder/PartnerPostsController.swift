@@ -16,7 +16,7 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var postsTable: UITableView!
     var platform: String!
     var username: String!
-    var ref: FIRDatabaseReference!
+    var ref: DatabaseReference!
     
     // This storage will probably change once database is implemented
     var bronzePosts: Dictionary<String, Any> = [:]
@@ -43,7 +43,7 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         
         automaticallyAdjustsScrollViewInsets = false
         navigationController?.navigationBar.isHidden = true
-        ref = FIRDatabase.database().reference()
+        ref = Database.database().reference()
         
         // TEST
         bronzePosts["Post1"] = "I NEED PARTNER"
@@ -56,7 +56,7 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         
         sections = [bronzePosts, silverPosts, goldPosts, platinumPosts, diamondPosts, championPosts, grandChampPosts]
         
-        floatingButtonView = UIImageView(frame: CGRect(x:self.view.frame.maxX-90, y:self.view.frame.maxY-90, width:70, height:70))
+        floatingButtonView = UIImageView(frame: CGRect(x:self.view.frame.maxX-100, y:self.view.frame.maxY-120, width:75, height:75))
         floatingButtonView.image = #imageLiteral(resourceName: "addButton")
         floatingButtonView.layer.cornerRadius = floatingButtonView.frame.size.height/2
         floatingButtonView.clipsToBounds = true
@@ -70,6 +70,9 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     override func didReceiveMemoryWarning() {
         
     }
+    
+    //-------------------------------------------------------------------------------------------//
+    // MARK: Table View
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -221,28 +224,25 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+    //-------------------------------------------------------------------------------------------//
+    // MARK: Scroll View
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         lastContentOffset = scrollView.contentOffset
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if lastContentOffset.y < scrollView.contentOffset.y {
-            if floatingButtonIsVisible {
-                movePostButton()
-            }
-        } else if lastContentOffset.y > scrollView.contentOffset.y {
-            if !floatingButtonIsVisible {
-                movePostButton()
+        if lastContentOffset != nil {
+            if lastContentOffset.y < scrollView.contentOffset.y {
+                if floatingButtonIsVisible {
+                    movePostButton()
+                }
+            } else if lastContentOffset.y > scrollView.contentOffset.y {
+                if !floatingButtonIsVisible {
+                    movePostButton()
+                }
             }
         }
-    }
-    
-    func toCreatePost() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "NewPost", bundle: nil)
-        
-        let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "NewPostController")
-        //self.present(vc, animated: true, completion: nil)
-        navigationController?.pushViewController(vc, animated: true)
     }
     
     func movePostButton() {
@@ -255,11 +255,25 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
                 self.floatingButtonIsVisible = false
             }
             else { // bring it back to it's position
-                self.floatingButtonView.frame.origin.y = self.view.frame.maxY-90
+                self.floatingButtonView.frame.origin.y = self.view.frame.maxY-120
                 self.floatingButtonIsVisible = true
             }
         }
     }
+    
+    //-------------------------------------------------------------------------------------------//
+    // MARK: Screen Navigation
+    
+    func toCreatePost() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "NewPost", bundle: nil)
+        
+        let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "NewPostController")
+        //self.present(vc, animated: true, completion: nil)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    //-------------------------------------------------------------------------------------------//
+    // MARK: Rocket League API
     
     func getRocketLeagueStats() {
         let string = "https://api.rocketleaguestats.com/v1/player"

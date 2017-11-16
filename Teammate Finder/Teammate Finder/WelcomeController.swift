@@ -51,16 +51,16 @@ class WelcomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             return
         }
         
-        let ref = FIRDatabase.database().reference()
-        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        let ref = Database.database().reference()
+        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         
-        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+        Auth.auth().signIn(with: credential) { (user, error) in
             if error != nil {
                 print(error.debugDescription)
                 return
             }
             
-            let userId = (FIRAuth.auth()?.currentUser?.uid)!
+            let userId = (Auth.auth().currentUser?.uid)!
             ref.child("Login").observeSingleEvent(of: .value, with: {(snapshot) in
                 
                 if snapshot.hasChild(userId) {
@@ -79,9 +79,9 @@ class WelcomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        let firebaseAuth = FIRAuth.auth()
+        let firebaseAuth = Auth.auth()
         do {
-            try firebaseAuth?.signOut()
+            try firebaseAuth.signOut()
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }

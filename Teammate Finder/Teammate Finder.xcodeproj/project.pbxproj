@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06EC687E095AA862E99C3B95 /* Pods_Teammate_FinderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C8E3AEFCA4F2F0D4050BA1 /* Pods_Teammate_FinderUITests.framework */; };
 		5606FA231ED8BE9900351D28 /* testPhoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5606FA221ED8BE9900351D28 /* testPhoto.jpg */; };
 		560AC7D21ED7B132003ACE51 /* NewPost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 560AC7D11ED7B132003ACE51 /* NewPost.storyboard */; };
 		560AC7D41ED7B150003ACE51 /* NewPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560AC7D31ED7B150003ACE51 /* NewPostController.swift */; };
@@ -24,6 +25,8 @@
 		56FE8B9D1EC3A68700F8DCF6 /* Teammate_FinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FE8B9C1EC3A68700F8DCF6 /* Teammate_FinderTests.swift */; };
 		56FE8BA81EC3A68700F8DCF6 /* Teammate_FinderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FE8BA71EC3A68700F8DCF6 /* Teammate_FinderUITests.swift */; };
 		852A6D2FC60A13DD7191B612 /* Pods_Teammate_Finder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED713EC5115E0D0D3498D94C /* Pods_Teammate_Finder.framework */; };
+		868B66581FBCB381005EE5C0 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868B66571FBCB381005EE5C0 /* Rank.swift */; };
+		C65385DD4D36400FA702D1DB /* Pods_Teammate_FinderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4779FD8ECA3354784E256063 /* Pods_Teammate_FinderTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +47,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0518F2840ACD1884C706DB57 /* Pods-Teammate FinderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teammate FinderTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teammate FinderTests/Pods-Teammate FinderTests.release.xcconfig"; sourceTree = "<group>"; };
 		14650D1C446E66AA1D1174B2 /* Pods-Teammate Finder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teammate Finder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teammate Finder/Pods-Teammate Finder.debug.xcconfig"; sourceTree = "<group>"; };
+		4779FD8ECA3354784E256063 /* Pods_Teammate_FinderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teammate_FinderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AFE85610C627578A136826B /* Pods-Teammate FinderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teammate FinderUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teammate FinderUITests/Pods-Teammate FinderUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5606FA221ED8BE9900351D28 /* testPhoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testPhoto.jpg; sourceTree = "<group>"; };
 		560AC7D11ED7B132003ACE51 /* NewPost.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewPost.storyboard; sourceTree = "<group>"; };
 		560AC7D31ED7B150003ACE51 /* NewPostController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostController.swift; sourceTree = "<group>"; };
@@ -69,6 +75,9 @@
 		56FE8BA91EC3A68700F8DCF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65C8E3AEFCA4F2F0D4050BA1 /* Pods_Teammate_FinderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teammate_FinderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65E16EF2EE2026897428782C /* Pods-Teammate Finder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teammate Finder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teammate Finder/Pods-Teammate Finder.release.xcconfig"; sourceTree = "<group>"; };
+		868B66571FBCB381005EE5C0 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
+		AA43D924F4D94BCC5EFC3EBA /* Pods-Teammate FinderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teammate FinderUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teammate FinderUITests/Pods-Teammate FinderUITests.release.xcconfig"; sourceTree = "<group>"; };
+		EBBC8D7AEDFE575EE0FFBDB5 /* Pods-Teammate FinderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teammate FinderTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teammate FinderTests/Pods-Teammate FinderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED713EC5115E0D0D3498D94C /* Pods_Teammate_Finder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teammate_Finder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -85,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C65385DD4D36400FA702D1DB /* Pods_Teammate_FinderTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06EC687E095AA862E99C3B95 /* Pods_Teammate_FinderUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +164,7 @@
 		56FE8B861EC3A68700F8DCF6 /* Teammate Finder */ = {
 			isa = PBXGroup;
 			children = (
+				868B66561FBCB343005EE5C0 /* Models */,
 				560AC7D01ED7B11C003ACE51 /* New Post */,
 				562C118E1ECFB0640072A5C2 /* Posts */,
 				562C118D1ECFAFB00072A5C2 /* Welcome */,
@@ -189,8 +201,17 @@
 			children = (
 				65C8E3AEFCA4F2F0D4050BA1 /* Pods_Teammate_FinderUITests.framework */,
 				ED713EC5115E0D0D3498D94C /* Pods_Teammate_Finder.framework */,
+				4779FD8ECA3354784E256063 /* Pods_Teammate_FinderTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		868B66561FBCB343005EE5C0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				868B66571FBCB381005EE5C0 /* Rank.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		9C15883F08C31C22EBC062AE /* Pods */ = {
@@ -198,6 +219,10 @@
 			children = (
 				14650D1C446E66AA1D1174B2 /* Pods-Teammate Finder.debug.xcconfig */,
 				65E16EF2EE2026897428782C /* Pods-Teammate Finder.release.xcconfig */,
+				EBBC8D7AEDFE575EE0FFBDB5 /* Pods-Teammate FinderTests.debug.xcconfig */,
+				0518F2840ACD1884C706DB57 /* Pods-Teammate FinderTests.release.xcconfig */,
+				4AFE85610C627578A136826B /* Pods-Teammate FinderUITests.debug.xcconfig */,
+				AA43D924F4D94BCC5EFC3EBA /* Pods-Teammate FinderUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -229,9 +254,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 56FE8BAF1EC3A68700F8DCF6 /* Build configuration list for PBXNativeTarget "Teammate FinderTests" */;
 			buildPhases = (
+				A277ED5AE574A4F6302A933F /* [CP] Check Pods Manifest.lock */,
 				56FE8B941EC3A68700F8DCF6 /* Sources */,
 				56FE8B951EC3A68700F8DCF6 /* Frameworks */,
 				56FE8B961EC3A68700F8DCF6 /* Resources */,
+				93274A0AB580B994549F7EDB /* [CP] Embed Pods Frameworks */,
+				9E1DC142E1F372D842A3A6D0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -247,9 +275,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 56FE8BB21EC3A68700F8DCF6 /* Build configuration list for PBXNativeTarget "Teammate FinderUITests" */;
 			buildPhases = (
+				2E7A5D7418BF4E6CEF55CD6E /* [CP] Check Pods Manifest.lock */,
 				56FE8B9F1EC3A68700F8DCF6 /* Sources */,
 				56FE8BA01EC3A68700F8DCF6 /* Frameworks */,
 				56FE8BA11EC3A68700F8DCF6 /* Resources */,
+				555857C80BB32D30B9EFEEA7 /* [CP] Embed Pods Frameworks */,
+				E72F4EF4ECA73045865E80FA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -345,16 +376,99 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Teammate Finder/Pods-Teammate Finder-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SJFluidSegmentedControl/SJFluidSegmentedControl.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SJFluidSegmentedControl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Teammate Finder/Pods-Teammate Finder-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A09FE5B397C65028342667E7 /* [CP] Copy Pods Resources */ = {
+		2E7A5D7418BF4E6CEF55CD6E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Teammate FinderUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		555857C80BB32D30B9EFEEA7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Teammate FinderUITests/Pods-Teammate FinderUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93274A0AB580B994549F7EDB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Teammate FinderTests/Pods-Teammate FinderTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E1DC142E1F372D842A3A6D0 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -366,7 +480,65 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Teammate FinderTests/Pods-Teammate FinderTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A09FE5B397C65028342667E7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Teammate Finder/Pods-Teammate Finder-resources.sh",
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseFacebookAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseGoogleAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebasePhoneAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseTwitterAuthUI.bundle,
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Teammate Finder/Pods-Teammate Finder-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A277ED5AE574A4F6302A933F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Teammate FinderTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E72F4EF4ECA73045865E80FA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Teammate FinderUITests/Pods-Teammate FinderUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EAB2FE9F67DD4F2D7D51DF6A /* [CP] Check Pods Manifest.lock */ = {
@@ -375,13 +547,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Teammate Finder-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -392,6 +567,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				562C11921ECFB4740072A5C2 /* PartnerPostsController.swift in Sources */,
+				868B66581FBCB381005EE5C0 /* Rank.swift in Sources */,
 				56C4040D1ED652F6006AC7E4 /* TestCell.swift in Sources */,
 				560D43C01ED2709A00D464A6 /* PartnerPostHeader.swift in Sources */,
 				569818EA1ED4A981001EF9F8 /* PartnerPost.swift in Sources */,
@@ -575,6 +751,7 @@
 		};
 		56FE8BB01EC3A68700F8DCF6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBBC8D7AEDFE575EE0FFBDB5 /* Pods-Teammate FinderTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -589,6 +766,7 @@
 		};
 		56FE8BB11EC3A68700F8DCF6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0518F2840ACD1884C706DB57 /* Pods-Teammate FinderTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -603,6 +781,7 @@
 		};
 		56FE8BB31EC3A68700F8DCF6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AFE85610C627578A136826B /* Pods-Teammate FinderUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "Teammate FinderUITests/Info.plist";
@@ -616,6 +795,7 @@
 		};
 		56FE8BB41EC3A68700F8DCF6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA43D924F4D94BCC5EFC3EBA /* Pods-Teammate FinderUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "Teammate FinderUITests/Info.plist";

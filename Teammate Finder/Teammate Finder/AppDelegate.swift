@@ -18,18 +18,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UIApplication.shared.statusBarStyle = .lightContent
-        FIRApp.configure()
+        FirebaseApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         if FBSDKAccessToken.current() != nil {
-            let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+            let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
             
-            FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+            Auth.auth().signIn(with: credential, completion: { (user, error) in
                 if error != nil {
                     print(error.debugDescription)
                     return
                 }
-            }
+            })
         }
         
         return true
@@ -55,10 +55,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        if FIRAuth.auth()?.currentUser != nil {
-            let firebaseAuth = FIRAuth.auth()
+        if Auth.auth().currentUser != nil {
+            let firebaseAuth = Auth.auth()
             do {
-                try firebaseAuth?.signOut()
+                try firebaseAuth.signOut()
             } catch let signOutError as NSError {
                 print ("Error signing out: %@", signOutError)
             }
@@ -67,9 +67,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         if FBSDKAccessToken.current() != nil {
-            let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+            let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
             
-            FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+            Auth.auth().signIn(with: credential) { (user, error) in
                 if error != nil {
                     print(error.debugDescription)
                     return

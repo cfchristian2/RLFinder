@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kBI-Oq-PbY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kBI-Oq-PbY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,7 +15,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NewPostNavigation" id="kBI-Oq-PbY" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LZx-cv-hq1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -39,49 +39,60 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Body of post" translatesAutoresizingMaskIntoConstraints="NO" id="PEc-CC-1Oz">
-                                <rect key="frame" x="0.0" y="265" width="375" height="144"/>
+                                <rect key="frame" x="16" y="265" width="343" height="144"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="0.80360243055555558" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hig-7U-uuC">
-                                <rect key="frame" x="51" y="160" width="274" height="29"/>
-                                <segments>
-                                    <segment title="" image="bronze3"/>
-                                    <segment title="" image="silver3"/>
-                                    <segment title="" image="gold3"/>
-                                    <segment title="" image="platinum3"/>
-                                    <segment title="" image="diamond3"/>
-                                    <segment title="" image="champion3"/>
-                                    <segment title="" image="gold3"/>
-                                </segments>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </segmentedControl>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7DB-4B-hTC" customClass="XMSegmentedControl">
-                                <rect key="frame" x="51" y="213" width="274" height="30"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ONI-NJ-4AT" customClass="SJFluidSegmentedControl" customModule="SJFluidSegmentedControl">
+                                <rect key="frame" x="16" y="126" width="343" height="45"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="DaF-04-SIk"/>
+                                    <constraint firstAttribute="width" constant="343" id="yFP-bc-9uo"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="gradientBounceColor">
+                                        <color key="value" red="0.14065068327512387" green="0.28366526121850666" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Rank" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKf-ec-FTb">
+                                <rect key="frame" x="129.5" y="83" width="116" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="PEc-CC-1Oz" secondAttribute="trailing" id="1yM-cI-o82"/>
-                            <constraint firstItem="5xF-zw-sJ9" firstAttribute="top" secondItem="7DB-4B-hTC" secondAttribute="bottom" constant="424" id="2K3-au-o80"/>
-                            <constraint firstItem="hig-7U-uuC" firstAttribute="top" secondItem="0Qd-SL-ons" secondAttribute="bottom" constant="96" id="SdQ-cX-NtZ"/>
-                            <constraint firstItem="hig-7U-uuC" firstAttribute="leading" secondItem="I0x-as-7fl" secondAttribute="leadingMargin" constant="35" id="UOQ-k2-7md"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hig-7U-uuC" secondAttribute="trailing" constant="34" id="bjg-lG-Pbs"/>
-                            <constraint firstItem="7DB-4B-hTC" firstAttribute="top" secondItem="hig-7U-uuC" secondAttribute="bottom" constant="25" id="eVd-Qw-F6x"/>
-                            <constraint firstItem="PEc-CC-1Oz" firstAttribute="leading" secondItem="I0x-as-7fl" secondAttribute="leading" id="eWV-Tj-Fb1"/>
-                            <constraint firstItem="7DB-4B-hTC" firstAttribute="leading" secondItem="I0x-as-7fl" secondAttribute="leadingMargin" constant="35" id="gDN-Cj-Fku"/>
+                            <constraint firstItem="NKf-ec-FTb" firstAttribute="top" secondItem="0Qd-SL-ons" secondAttribute="bottom" constant="19" id="2qq-kG-hpd"/>
+                            <constraint firstItem="PEc-CC-1Oz" firstAttribute="trailing" secondItem="I0x-as-7fl" secondAttribute="trailingMargin" id="9wI-Xy-wLD"/>
+                            <constraint firstItem="PEc-CC-1Oz" firstAttribute="centerX" secondItem="I0x-as-7fl" secondAttribute="centerX" id="J1i-d1-OBA"/>
+                            <constraint firstItem="ONI-NJ-4AT" firstAttribute="top" secondItem="NKf-ec-FTb" secondAttribute="bottom" constant="8" id="Y4c-bT-JNV"/>
+                            <constraint firstItem="ONI-NJ-4AT" firstAttribute="centerX" secondItem="I0x-as-7fl" secondAttribute="centerX" id="dpV-FJ-kWa"/>
+                            <constraint firstItem="NKf-ec-FTb" firstAttribute="centerX" secondItem="I0x-as-7fl" secondAttribute="centerX" id="fJ5-6I-8ne"/>
+                            <constraint firstItem="ONI-NJ-4AT" firstAttribute="top" secondItem="0Qd-SL-ons" secondAttribute="bottom" constant="62" id="gRN-bI-da5"/>
                             <constraint firstItem="5xF-zw-sJ9" firstAttribute="top" secondItem="PEc-CC-1Oz" secondAttribute="bottom" constant="258" id="h5b-e2-re6"/>
                             <constraint firstItem="PEc-CC-1Oz" firstAttribute="top" secondItem="0Qd-SL-ons" secondAttribute="bottom" constant="201" id="jqK-sh-GKv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7DB-4B-hTC" secondAttribute="trailing" constant="34" id="qWa-Vo-0TO"/>
+                            <constraint firstItem="PEc-CC-1Oz" firstAttribute="leading" secondItem="I0x-as-7fl" secondAttribute="leadingMargin" id="vz6-4D-ZcF"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Make a new post" id="g1n-SE-xS8"/>
+                    <navigationItem key="navigationItem" title="Make a new post" id="g1n-SE-xS8">
+                        <barButtonItem key="rightBarButtonItem" title="Post" id="Pda-rG-8ff">
+                            <connections>
+                                <action selector="buttonPushed:" destination="pJ2-aM-pNr" id="0oe-sw-e0L"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="barButtons" destination="hig-7U-uuC" id="lnI-Ke-lvw"/>
                         <outlet property="postBody" destination="PEc-CC-1Oz" id="jtE-8S-2Bt"/>
+                        <outlet property="postButton" destination="Pda-rG-8ff" id="JDT-gp-1K6"/>
+                        <outlet property="rankChooser" destination="ONI-NJ-4AT" id="bKj-w8-5S6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dsw-bJ-dsw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -89,12 +100,4 @@
             <point key="canvasLocation" x="-7.2000000000000002" y="25.637181409295355"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="bronze3" width="256" height="265"/>
-        <image name="champion3" width="256" height="265"/>
-        <image name="diamond3" width="256" height="265"/>
-        <image name="gold3" width="256" height="265"/>
-        <image name="platinum3" width="256" height="265"/>
-        <image name="silver3" width="256" height="265"/>
-    </resources>
 </document>
