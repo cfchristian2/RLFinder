@@ -25,10 +25,13 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     var platinumPosts: Dictionary<String, Any> = [:]
     var diamondPosts: Dictionary<String, Any> = [:]
     var championPosts: Dictionary<String, Any> = [:]
-    var grandChampPosts: Dictionary<String, Any> = [:]
+    var grandChampionPosts: Dictionary<String, Any> = [:]
     
     // Addressing post dicts by section number
     var sections: [Dictionary<String, Any>]!
+    
+    // Addressing post dicts by name
+    var postTypeByName: [String : [String : Any]]!
     
     // Section collapsed or not
     var isHidden = [true, true, true, true, true, true, true]
@@ -43,15 +46,11 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         
         ref = Database.database().reference()
         
-        // TEST
-        bronzePosts["Post1"] = "I NEED PARTNER"
-        bronzePosts["Post2"] = "I NEED PARTNER"
-        bronzePosts["Post3"] = "I NEED PARTNER"
-        
         postsTable.delegate = self
         postsTable.dataSource = self
         
-        sections = [bronzePosts, silverPosts, goldPosts, platinumPosts, diamondPosts, championPosts, grandChampPosts]
+        sections = [bronzePosts, silverPosts, goldPosts, platinumPosts, diamondPosts, championPosts, grandChampionPosts]
+        postTypeByName = ["bronzePosts" : bronzePosts, "silverPosts" : silverPosts, "goldPosts" : goldPosts, "platinumPosts" : platinumPosts, "diamondPosts" : diamondPosts, "championPosts" : championPosts, "grandChampionPosts" : grandChampionPosts]
         
         floatingButtonView = UIImageView(frame: CGRect(x:self.view.frame.maxX-100, y:self.view.frame.maxY-120, width:75, height:75))
         floatingButtonView.image = #imageLiteral(resourceName: "addButton")
@@ -70,6 +69,26 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         //navigationController?.navigationBar.isHidden = true
         
         getRocketLeagueStats()
+        
+        ref.child("ps4").observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? [String : Any]
+            for (postType, posts) in value! {
+                for (_, post) in posts as! [String : [String : String]] {
+                    print(postType)
+                    self.postTypeByName[postType]?["username"] = post["username"] ?? "username"
+                    /*
+                     print(post["username"] ?? "Fucked up username")
+                     print(post["postBody"] ?? "Fucked up postBody")
+                     print(post["gameType"] ?? "Fucked up gameType")
+                     */
+                    print(self.goldPosts["username"] ?? "FUCK")
+                }
+            }
+            self.postsTable.reloadData()
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -122,10 +141,11 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
             if isHidden[section] {
                 return 0
             } else {
-                return grandChampPosts.count
+                return grandChampionPosts.count
             }
         default:
-            return 4
+            print("Defaulted on number of posts in tableview")
+            return 0
         }
 
     }
@@ -211,13 +231,16 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     {
         isHidden[gestureRecognizer.section!] = !isHidden[gestureRecognizer.section!]
         
+        print(sections[gestureRecognizer.section!].count)
+        print(goldPosts["username"] ?? "FUCK")
+        
         if sections[gestureRecognizer.section!].count == 0 {
             return
         }
         
         var indexPaths:[IndexPath] = []
         
-        for i in 0..<bronzePosts.count {
+        for i in 0..<sections[gestureRecognizer.section!].count {
             indexPaths.append(IndexPath(row: i, section: gestureRecognizer.section!))
         }
         
