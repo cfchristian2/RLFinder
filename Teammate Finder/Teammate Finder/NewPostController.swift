@@ -48,23 +48,13 @@ class NewPostController: UIViewController, UITextViewDelegate, SJFluidSegmentedC
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
-        navigationController?.navigationBar.isHidden = true
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = false
-    }
-    
     //-------------------------------------------------------------------------------------------//
     // Posting
     
     func postPost() {
         print(ranks[rankChooser.currentSegment].title)
         let newPostReference = ref.child("ps4").child(ranks[rankChooser.currentSegment].postType).childByAutoId()
-        newPostReference.setValue(["gameType" : "doubles", "textPost" : postBody.text ?? "", "username" : "bestUser69"])
-        
+        newPostReference.setValue(["gameType" : "doubles", "postBody" : postBody.text ?? "", "username" : "bestUser69"])
     }
     
     //-------------------------------------------------------------------------------------------//

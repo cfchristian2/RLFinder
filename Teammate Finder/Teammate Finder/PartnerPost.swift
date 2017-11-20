@@ -10,7 +10,12 @@ import UIKit
 
 class PartnerPost: UITableViewCell {
     
+
+    @IBOutlet weak var postBody: UITextField!
+    @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var gameType: UILabel!
     var postId: String!
+    var username: String!
 
     override func awakeFromNib() {
         super.awakeFromNib()

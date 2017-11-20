@@ -41,15 +41,12 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        automaticallyAdjustsScrollViewInsets = false
-        navigationController?.navigationBar.isHidden = true
         ref = Database.database().reference()
         
         // TEST
         bronzePosts["Post1"] = "I NEED PARTNER"
         bronzePosts["Post2"] = "I NEED PARTNER"
         bronzePosts["Post3"] = "I NEED PARTNER"
-        
         
         postsTable.delegate = self
         postsTable.dataSource = self
@@ -63,6 +60,14 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         floatingButtonView.isUserInteractionEnabled = true
         floatingButtonView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toCreatePost)))
         view.addSubview(floatingButtonView)
+        
+        automaticallyAdjustsScrollViewInsets = false
+        
+        
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.barStyle = .blackTranslucent
+        navigationController?.navigationBar.tintColor = .lightGray
+        //navigationController?.navigationBar.isHidden = true
         
         getRocketLeagueStats()
     }
@@ -142,7 +147,6 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
         let headerCell = postsTable.dequeueReusableCell(withIdentifier: "PostHeader") as! PartnerPostHeader
         
         switch (section) {

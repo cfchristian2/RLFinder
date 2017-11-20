@@ -77,6 +77,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.15684100985527039" green="0.15687525272369385" blue="0.15683883428573608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="tierIcon" destination="tX1-2h-Xb1" id="0JS-0v-i2U"/>
                                             <outlet property="tierName" destination="X0S-rq-rEq" id="w1y-Va-7Nu"/>
@@ -88,8 +89,55 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5VQ-jm-aCu" id="fNY-po-vbj">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="121.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18q-5i-yoU">
+                                                    <rect key="frame" x="15" y="11" width="121" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="121" id="ud2-zV-wmk"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HB6-vH-QQy">
+                                                    <rect key="frame" x="243" y="11" width="117" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="117" id="sCe-Aa-o2v"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A38-H1-Y3h">
+                                                    <rect key="frame" x="15" y="46" width="345" height="65"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="65" id="YVt-GF-TK5"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="A38-H1-Y3h" firstAttribute="bottom" secondItem="fNY-po-vbj" secondAttribute="bottomMargin" id="0ds-cS-pwM"/>
+                                                <constraint firstItem="18q-5i-yoU" firstAttribute="top" secondItem="fNY-po-vbj" secondAttribute="topMargin" id="1Vs-gr-8wX"/>
+                                                <constraint firstItem="A38-H1-Y3h" firstAttribute="leading" secondItem="fNY-po-vbj" secondAttribute="leadingMargin" id="1k5-GK-jg8"/>
+                                                <constraint firstItem="A38-H1-Y3h" firstAttribute="leading" secondItem="fNY-po-vbj" secondAttribute="leadingMargin" id="449-5o-OPL"/>
+                                                <constraint firstItem="A38-H1-Y3h" firstAttribute="bottom" secondItem="fNY-po-vbj" secondAttribute="bottomMargin" id="6Cg-6G-Xg6"/>
+                                                <constraint firstItem="18q-5i-yoU" firstAttribute="leading" secondItem="fNY-po-vbj" secondAttribute="leadingMargin" id="BhS-lK-GQt"/>
+                                                <constraint firstItem="HB6-vH-QQy" firstAttribute="trailing" secondItem="fNY-po-vbj" secondAttribute="trailingMargin" id="C8w-ka-nzg"/>
+                                                <constraint firstItem="A38-H1-Y3h" firstAttribute="trailing" secondItem="fNY-po-vbj" secondAttribute="trailingMargin" id="RxN-Yl-97K"/>
+                                                <constraint firstItem="A38-H1-Y3h" firstAttribute="trailing" secondItem="fNY-po-vbj" secondAttribute="trailingMargin" id="hwe-Ei-cEk"/>
+                                                <constraint firstItem="HB6-vH-QQy" firstAttribute="top" secondItem="fNY-po-vbj" secondAttribute="topMargin" id="rhM-ME-hWs"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.15684100985527039" green="0.15687525272369385" blue="0.15683883428573608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="date" destination="HB6-vH-QQy" id="ytO-OR-S4o"/>
+                                            <outlet property="gameType" destination="18q-5i-yoU" id="Jco-wj-un3"/>
+                                            <outlet property="postBody" destination="A38-H1-Y3h" id="Y85-bu-jZe"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="test" rowHeight="94" id="GY1-jU-RQV" customClass="TestCell" customModule="Teammate_Finder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="277.5" width="375" height="94"/>
