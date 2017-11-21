@@ -19,19 +19,13 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     var ref: DatabaseReference!
     
     // This storage will probably change once database is implemented
-    var bronzePosts: Dictionary<String, Any> = [:]
-    var silverPosts: Dictionary<String, Any> = [:]
-    var goldPosts: Dictionary<String, Any> = [:]
-    var platinumPosts: Dictionary<String, Any> = [:]
-    var diamondPosts: Dictionary<String, Any> = [:]
-    var championPosts: Dictionary<String, Any> = [:]
-    var grandChampionPosts: Dictionary<String, Any> = [:]
-    
-    // Addressing post dicts by section number
-    var sections: [Dictionary<String, Any>]!
-    
-    // Addressing post dicts by name
-    var postTypeByName: [String : [String : Any]]!
+    var bronzePosts: [String : Any] = [:]
+    var silverPosts: [String : Any] = [:]
+    var goldPosts: [String : Any] = [:]
+    var platinumPosts: [String : Any] = [:]
+    var diamondPosts: [String : Any] = [:]
+    var championPosts: [String : Any] = [:]
+    var grandChampionPosts: [String : Any] = [:]
     
     // Section collapsed or not
     var isHidden = [true, true, true, true, true, true, true]
@@ -40,7 +34,7 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     var floatingButtonIsVisible = true
     var floatingButtonView: UIImageView!
     var lastContentOffset: CGPoint!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,9 +42,6 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         
         postsTable.delegate = self
         postsTable.dataSource = self
-        
-        sections = [bronzePosts, silverPosts, goldPosts, platinumPosts, diamondPosts, championPosts, grandChampionPosts]
-        postTypeByName = ["bronzePosts" : bronzePosts, "silverPosts" : silverPosts, "goldPosts" : goldPosts, "platinumPosts" : platinumPosts, "diamondPosts" : diamondPosts, "championPosts" : championPosts, "grandChampionPosts" : grandChampionPosts]
         
         floatingButtonView = UIImageView(frame: CGRect(x:self.view.frame.maxX-100, y:self.view.frame.maxY-120, width:75, height:75))
         floatingButtonView.image = #imageLiteral(resourceName: "addButton")
@@ -74,21 +65,31 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
             let value = snapshot.value as? [String : Any]
             for (postType, posts) in value! {
                 for (_, post) in posts as! [String : [String : String]] {
-                    print(postType)
-                    self.postTypeByName[postType]?["username"] = post["username"] ?? "username"
-                    /*
-                     print(post["username"] ?? "Fucked up username")
-                     print(post["postBody"] ?? "Fucked up postBody")
-                     print(post["gameType"] ?? "Fucked up gameType")
-                     */
-                    print(self.goldPosts["username"] ?? "FUCK")
+                    switch (postType) {
+                    case "bronzePosts":
+                        self.bronzePosts["username"] = post["username"] ?? "username"
+                    case "silverPosts":
+                        self.silverPosts["username"] = post["username"] ?? "username"
+                    case "goldPosts":
+                        self.goldPosts["username"] = post["username"] ?? "username"
+                    case "platinumPosts":
+                        self.platinumPosts["username"] = post["username"] ?? "username"
+                    case "diamondPosts":
+                        self.diamondPosts["username"] = post["username"] ?? "username"
+                    case "championPosts":
+                        self.championPosts["username"] = post["username"] ?? "username"
+                    case "grandChampionPosts":
+                        self.grandChampionPosts["username"] = post["username"] ?? "username"
+                    default:
+                        print("Hmmmmmmm")
+                    }
                 }
             }
+            print(self.goldPosts.count)
             self.postsTable.reloadData()
         }) { (error) in
             print(error.localizedDescription)
         }
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -231,16 +232,34 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     {
         isHidden[gestureRecognizer.section!] = !isHidden[gestureRecognizer.section!]
         
-        print(sections[gestureRecognizer.section!].count)
-        print(goldPosts["username"] ?? "FUCK")
+        var selectedDict = [String : Any]()
         
-        if sections[gestureRecognizer.section!].count == 0 {
+        switch (gestureRecognizer.section) {
+        case 0:
+            selectedDict = bronzePosts
+        case 1:
+            selectedDict = silverPosts
+        case 2:
+            selectedDict = goldPosts
+        case 3:
+            selectedDict = platinumPosts
+        case 4:
+            selectedDict = diamondPosts
+        case 5:
+            selectedDict = championPosts
+        case 6:
+            selectedDict = grandChampionPosts
+        default:
+            print("User selected section of postsTable that doesn't exist")
+        }
+        
+        if selectedDict.count == 0 {
             return
         }
         
         var indexPaths:[IndexPath] = []
         
-        for i in 0..<sections[gestureRecognizer.section!].count {
+        for i in 0..<selectedDict.count {
             indexPaths.append(IndexPath(row: i, section: gestureRecognizer.section!))
         }
         
