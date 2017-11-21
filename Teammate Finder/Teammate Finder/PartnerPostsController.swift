@@ -19,13 +19,13 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     var ref: DatabaseReference!
     
     // This storage will probably change once database is implemented
-    var bronzePosts: [String : Any] = [:]
-    var silverPosts: [String : Any] = [:]
-    var goldPosts: [String : Any] = [:]
-    var platinumPosts: [String : Any] = [:]
-    var diamondPosts: [String : Any] = [:]
-    var championPosts: [String : Any] = [:]
-    var grandChampionPosts: [String : Any] = [:]
+    var bronzePosts: [String] = []
+    var silverPosts: [String] = []
+    var goldPosts: [String] = []
+    var platinumPosts: [String] = []
+    var diamondPosts: [String] = []
+    var championPosts: [String] = []
+    var grandChampionPosts: [String] = []
     
     // Section collapsed or not
     var isHidden = [true, true, true, true, true, true, true]
@@ -57,43 +57,58 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.barStyle = .blackTranslucent
         navigationController?.navigationBar.tintColor = .lightGray
-        //navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = true
         
         getRocketLeagueStats()
         
+        readDatabase()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        readDatabase()
+    }
+    
+    //-------------------------------------------------------------------------------------------//
+    // MARK: Firebase
+    
+    func readDatabase() {
+        bronzePosts = []
+        silverPosts = []
+        goldPosts = []
+        platinumPosts = []
+        diamondPosts = []
+        championPosts = []
+        grandChampionPosts = []
+        
+        //  TODO: Change "ps4" to whatever platform user chooses
         ref.child("ps4").observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? [String : Any]
             for (postType, posts) in value! {
-                for (_, post) in posts as! [String : [String : String]] {
+                for (postId, post) in posts as! [String : [String : String]] {
                     switch (postType) {
                     case "bronzePosts":
-                        self.bronzePosts["username"] = post["username"] ?? "username"
+                        self.bronzePosts.append(postId)
                     case "silverPosts":
-                        self.silverPosts["username"] = post["username"] ?? "username"
+                        self.silverPosts.append(postId)
                     case "goldPosts":
-                        self.goldPosts["username"] = post["username"] ?? "username"
+                        self.goldPosts.append(postId)
                     case "platinumPosts":
-                        self.platinumPosts["username"] = post["username"] ?? "username"
+                        self.platinumPosts.append(postId)
                     case "diamondPosts":
-                        self.diamondPosts["username"] = post["username"] ?? "username"
+                        self.diamondPosts.append(postId)
                     case "championPosts":
-                        self.championPosts["username"] = post["username"] ?? "username"
+                        self.championPosts.append(postId)
                     case "grandChampionPosts":
-                        self.grandChampionPosts["username"] = post["username"] ?? "username"
+                        self.grandChampionPosts.append(postId)
                     default:
                         print("Hmmmmmmm")
                     }
                 }
             }
-            print(self.goldPosts.count)
             self.postsTable.reloadData()
         }) { (error) in
             print(error.localizedDescription)
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        
     }
     
     //-------------------------------------------------------------------------------------------//
@@ -220,7 +235,29 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        var selectedPostArray = [String]()
+        
+        switch (indexPath.section) {
+        case 0:
+            selectedPostArray = bronzePosts
+        case 1:
+            selectedPostArray = silverPosts
+        case 2:
+            selectedPostArray = goldPosts
+        case 3:
+            selectedPostArray = platinumPosts
+        case 4:
+            selectedPostArray = diamondPosts
+        case 5:
+            selectedPostArray = championPosts
+        case 6:
+            selectedPostArray = grandChampionPosts
+        default:
+            print("User selected section of postsTable that doesn't exist")
+        }
+        
         let cell = postsTable.dequeueReusableCell(withIdentifier: "Post") as! PartnerPost
+        cell.postBody.text = selectedPostArray[indexPath.row]
         return cell
     }
     
@@ -232,34 +269,34 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     {
         isHidden[gestureRecognizer.section!] = !isHidden[gestureRecognizer.section!]
         
-        var selectedDict = [String : Any]()
+        var selectedPostArray = [String]()
         
         switch (gestureRecognizer.section) {
         case 0:
-            selectedDict = bronzePosts
+            selectedPostArray = bronzePosts
         case 1:
-            selectedDict = silverPosts
+            selectedPostArray = silverPosts
         case 2:
-            selectedDict = goldPosts
+            selectedPostArray = goldPosts
         case 3:
-            selectedDict = platinumPosts
+            selectedPostArray = platinumPosts
         case 4:
-            selectedDict = diamondPosts
+            selectedPostArray = diamondPosts
         case 5:
-            selectedDict = championPosts
+            selectedPostArray = championPosts
         case 6:
-            selectedDict = grandChampionPosts
+            selectedPostArray = grandChampionPosts
         default:
             print("User selected section of postsTable that doesn't exist")
         }
         
-        if selectedDict.count == 0 {
+        if selectedPostArray.count == 0 {
             return
         }
         
         var indexPaths:[IndexPath] = []
         
-        for i in 0..<selectedDict.count {
+        for i in 0..<selectedPostArray.count {
             indexPaths.append(IndexPath(row: i, section: gestureRecognizer.section!))
         }
         
