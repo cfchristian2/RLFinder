@@ -53,7 +53,6 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         
         automaticallyAdjustsScrollViewInsets = false
         
-        
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.barStyle = .blackTranslucent
         navigationController?.navigationBar.tintColor = .lightGray
@@ -175,11 +174,7 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 90.0
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 10.0
+        return 85.0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -217,20 +212,6 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         headerCell.contentView.backgroundColor = UIColor(red: 40/255, green: 40/255, blue: 40/255, alpha: 1)
         
         return headerCell.contentView
-        
-        //
-        // Test for design reference
-        //
-        /*
-        let testCell = postsTable.dequeueReusableCell(withIdentifier: "test") as! TestCell
-        testCell.headerImage.image = #imageLiteral(resourceName: "testPhoto.jpg")
-        let headerTap = SectionHeaderTap(target: self, action: #selector(expandPosts(gestureRecognizer:)))
-        headerTap.section = section
-        testCell.contentView.addGestureRecognizer(headerTap)
-        testCell.contentView.backgroundColor = UIColor(red: 40/255, green: 40/255, blue: 40/255, alpha: 1)
-        
-        return testCell.contentView
-        */
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -301,9 +282,9 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         }
         
         if !isHidden[gestureRecognizer.section!] {
-            postsTable.insertRows(at: indexPaths, with: .top)
+            postsTable.insertRows(at: indexPaths, with: .fade)
         } else {
-            postsTable.deleteRows(at: indexPaths, with: .top)
+            postsTable.deleteRows(at: indexPaths, with: .fade)
         }
     }
     
