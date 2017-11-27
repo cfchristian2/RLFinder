@@ -1,0 +1,11 @@
+use_frameworks!
+target 'Teammate Finder' do
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod 'Firebase/Auth'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKShareKit'
+  pod 'FBSDKLoginKit'
+  pod 'Floaty',:git => "https://github.com/kciter/Floaty"
+  pod 'SJFluidSegmentedControl'
+end
