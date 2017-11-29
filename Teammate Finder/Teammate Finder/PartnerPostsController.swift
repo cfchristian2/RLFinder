@@ -13,6 +13,10 @@ import Firebase
 
 class PartnerPostsController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate{
     
+
+    @IBAction func toSettings(_ sender: Any) {
+        toSettings()
+    }
     @IBOutlet weak var postsTable: UITableView!
     var platform: String!
     var username: String!
@@ -58,8 +62,6 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         navigationController?.navigationBar.tintColor = .lightGray
         
         getRocketLeagueStats()
-        
-        readDatabase()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -85,19 +87,19 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
                 for (postId, post) in posts as! [String : [String : String]] {
                     switch (postType) {
                     case "bronzePosts":
-                        self.bronzePosts.append(postId)
+                        self.bronzePosts.append(post["postBody"] ?? postId)
                     case "silverPosts":
-                        self.silverPosts.append(postId)
+                        self.silverPosts.append(post["postBody"] ?? postId)
                     case "goldPosts":
-                        self.goldPosts.append(postId)
+                        self.goldPosts.append(post["postBody"] ?? postId)
                     case "platinumPosts":
-                        self.platinumPosts.append(postId)
+                        self.platinumPosts.append(post["postBody"] ?? postId)
                     case "diamondPosts":
-                        self.diamondPosts.append(postId)
+                        self.diamondPosts.append(post["postBody"] ?? postId)
                     case "championPosts":
-                        self.championPosts.append(postId)
+                        self.championPosts.append(post["postBody"] ?? postId)
                     case "grandChampionPosts":
-                        self.grandChampionPosts.append(postId)
+                        self.grandChampionPosts.append(post["postBody"] ?? postId)
                     default:
                         print("Hmmmmmmm")
                     }
@@ -178,29 +180,37 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = postsTable.dequeueReusableCell(withIdentifier: "PostHeader") as! PartnerPostHeader
+        var postCount = 0
         
         switch (section) {
         case 0:
             headerCell.tierName.text = "BRONZE TIER"
             headerCell.tierIcon.image = #imageLiteral(resourceName: "bronze3")
+            postCount = bronzePosts.count
         case 1:
             headerCell.tierName.text = "SILVER TIER"
             headerCell.tierIcon.image = #imageLiteral(resourceName: "silver3")
+            postCount = silverPosts.count
         case 2:
             headerCell.tierName.text = "GOLD TIER"
             headerCell.tierIcon.image = #imageLiteral(resourceName: "gold3")
+            postCount = goldPosts.count
         case 3:
             headerCell.tierName.text = "PLATINUM TIER"
             headerCell.tierIcon.image = #imageLiteral(resourceName: "platinum3")
+            postCount = platinumPosts.count
         case 4:
             headerCell.tierName.text = "DIAMOND TIER"
             headerCell.tierIcon.image = #imageLiteral(resourceName: "diamond3")
+            postCount = diamondPosts.count
         case 5:
             headerCell.tierName.text = "CHAMPION TIER"
             headerCell.tierIcon.image = #imageLiteral(resourceName: "champion3")
+            postCount = championPosts.count
         case 6:
-            headerCell.tierName.text = "GRAND CHAMPION"
+            headerCell.tierName.text = "GRAND CHAMP"
             headerCell.tierIcon.image = #imageLiteral(resourceName: "grand champion")
+            postCount = grandChampionPosts.count
         default:
             headerCell.tierName.text = "Uh Oh"
         }
@@ -209,6 +219,9 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         headerTap.section = section
         headerCell.contentView.addGestureRecognizer(headerTap)
         headerCell.contentView.backgroundColor = UIColor(red: 40/255, green: 40/255, blue: 40/255, alpha: 1)
+        if postCount == 0 {
+            headerCell.caret.isHidden = true
+        }
         
         return headerCell.contentView
     }
@@ -238,6 +251,9 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         
         let cell = postsTable.dequeueReusableCell(withIdentifier: "Post") as! PartnerPost
         cell.postBody.text = selectedPostArray[indexPath.row]
+        cell.layer.cornerRadius = 10
+        cell.layer.borderWidth = 1
+        cell.layer.masksToBounds = true
         return cell
     }
     
@@ -331,7 +347,13 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         let storyboard: UIStoryboard = UIStoryboard(name: "NewPost", bundle: nil)
         
         let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "NewPostController")
-        //self.present(vc, animated: true, completion: nil)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func toSettings() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Welcome", bundle: nil)
+        
+        let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "SettingsController")
         navigationController?.pushViewController(vc, animated: true)
     }
     

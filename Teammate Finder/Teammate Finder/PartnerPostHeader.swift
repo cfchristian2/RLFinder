@@ -12,6 +12,7 @@ class PartnerPostHeader: UITableViewCell {
 
     @IBOutlet weak var tierIcon: UIImageView!
     @IBOutlet weak var tierName: UILabel!
+    @IBOutlet weak var caret: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

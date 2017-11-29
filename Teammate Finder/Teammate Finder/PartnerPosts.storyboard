@@ -91,7 +91,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="xe2-sF-fEN" secondAttribute="trailing" constant="12" id="7du-2G-mw8"/>
                                                 <constraint firstItem="tX1-2h-Xb1" firstAttribute="centerY" secondItem="wzi-55-bdw" secondAttribute="centerY" id="9dd-wS-4vD"/>
                                                 <constraint firstItem="X0S-rq-rEq" firstAttribute="centerX" secondItem="wzi-55-bdw" secondAttribute="centerX" id="Qfp-Dx-phY"/>
-                                                <constraint firstItem="X0S-rq-rEq" firstAttribute="leading" secondItem="tX1-2h-Xb1" secondAttribute="trailing" constant="19.5" id="U6l-T2-uZW"/>
+                                                <constraint firstItem="tX1-2h-Xb1" firstAttribute="leading" secondItem="wzi-55-bdw" secondAttribute="leadingMargin" constant="8" id="Udy-Lj-lNl"/>
                                                 <constraint firstAttribute="bottom" secondItem="Fyn-LH-m9K" secondAttribute="bottom" constant="-0.5" id="dPQ-Kf-sE5"/>
                                                 <constraint firstItem="xe2-sF-fEN" firstAttribute="centerY" secondItem="wzi-55-bdw" secondAttribute="centerY" id="fZ0-aR-m4J"/>
                                                 <constraint firstAttribute="trailing" secondItem="Fyn-LH-m9K" secondAttribute="trailing" id="hq2-UQ-oKg"/>
@@ -100,6 +100,7 @@
                                         <color key="backgroundColor" red="0.15684100985527039" green="0.15687525272369385" blue="0.15683883428573608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
+                                            <outlet property="caret" destination="xe2-sF-fEN" id="9f4-Qb-Oky"/>
                                             <outlet property="tierIcon" destination="tX1-2h-Xb1" id="0JS-0v-i2U"/>
                                             <outlet property="tierName" destination="X0S-rq-rEq" id="w1y-Va-7Nu"/>
                                         </connections>
@@ -188,8 +189,8 @@
                         <color key="backgroundColor" red="0.15684100985527039" green="0.15687525272369385" blue="0.15683883428573608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ocA-hv-2M2" firstAttribute="leading" secondItem="PiL-UE-7LM" secondAttribute="leading" id="7xf-Zm-nds"/>
-                            <constraint firstItem="yQU-nE-XDl" firstAttribute="top" secondItem="ocA-hv-2M2" secondAttribute="bottom" id="YYb-xR-toj"/>
-                            <constraint firstItem="ocA-hv-2M2" firstAttribute="top" secondItem="p5y-dI-ART" secondAttribute="bottom" id="lHN-q2-4Jq"/>
+                            <constraint firstItem="ocA-hv-2M2" firstAttribute="top" secondItem="p5y-dI-ART" secondAttribute="bottom" id="VDH-5K-WBa"/>
+                            <constraint firstItem="yQU-nE-XDl" firstAttribute="top" secondItem="ocA-hv-2M2" secondAttribute="bottom" id="ofJ-7s-WC8"/>
                             <constraint firstAttribute="trailing" secondItem="ocA-hv-2M2" secondAttribute="trailing" id="t89-F8-pi7"/>
                         </constraints>
                     </view>
@@ -197,6 +198,9 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="settings" id="dyS-FP-1gA">
                             <inset key="imageInsets" minX="0.0" minY="-1" maxX="0.0" maxY="-12"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="toSettings:" destination="LcV-0p-JDh" id="vdT-qa-QE2"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
