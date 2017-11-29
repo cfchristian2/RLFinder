@@ -27,7 +27,7 @@
             </objects>
             <point key="canvasLocation" x="-873" y="-1"/>
         </scene>
-        <!--Partner Posts Controller-->
+        <!--Posts-->
         <scene sceneID="e2g-hc-pvT">
             <objects>
                 <viewController id="LcV-0p-JDh" customClass="PartnerPostsController" customModule="Teammate_Finder" customModuleProvider="target" sceneMemberID="viewController">
@@ -184,7 +184,12 @@
                             <constraint firstAttribute="trailing" secondItem="ocA-hv-2M2" secondAttribute="trailing" id="t89-F8-pi7"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="deT-DM-CcW"/>
+                    <navigationItem key="navigationItem" title="Posts" id="deT-DM-CcW">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="settings" id="dyS-FP-1gA">
+                            <inset key="imageInsets" minX="0.0" minY="-3" maxX="0.0" maxY="-11"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="postsTable" destination="ocA-hv-2M2" id="COy-aW-uWH"/>
                     </connections>
@@ -194,4 +199,7 @@
             <point key="canvasLocation" x="-103.2" y="-1.3493253373313345"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="settings" width="50" height="50"/>
+    </resources>
 </document>

@@ -17,22 +17,19 @@ class WelcomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     let systems = ["PS4", "Xbox", "PC"]
     var currentRow = 0
     let loginButton = FBSDKLoginButton()
+    var ref: DatabaseReference!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ref = Database.database().reference()
         
         picker.delegate = self
         picker.dataSource = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if (FBSDKAccessToken.current() != nil) {
-            let storyboard: UIStoryboard = UIStoryboard(name: "PartnerPosts", bundle: nil)
-            let vc: UINavigationController = storyboard.instantiateViewController(withIdentifier: "PostsNavigation") as! UINavigationController
-            self.present(vc, animated: true, completion: nil)
-        }
-        
         
     }
 
@@ -51,7 +48,7 @@ class WelcomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             return
         }
         
-        let ref = Database.database().reference()
+        ref = Database.database().reference()
         let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         
         Auth.auth().signIn(with: credential) { (user, error) in
@@ -61,14 +58,17 @@ class WelcomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             }
             
             let userId = (Auth.auth().currentUser?.uid)!
-            ref.child("Login").observeSingleEvent(of: .value, with: {(snapshot) in
+            self.ref.child("Login").observeSingleEvent(of: .value, with: {(snapshot) in
                 
                 if snapshot.hasChild(userId) {
-                    // Already has account, go to posts
+                    // Already has account, load user and go to posts
+                    User.loadUser(uid: userId)
                 }
                 else {
-                    // Potentially go to a user edit page?
-                    // For now, every user new or existing will go to posts page
+                    // Create user in Firebase, set current user and then go to posts page
+                    User.currentUser = User(uid: userId)
+                    User.currentUser?.email = user?.email
+                    self.ref.child("users").setValue(userId)
                 }
                 
                 let storyboard: UIStoryboard = UIStoryboard(name: "PartnerPosts", bundle: nil)

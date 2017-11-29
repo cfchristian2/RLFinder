@@ -21,16 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        if FBSDKAccessToken.current() != nil {
-            let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-            
-            Auth.auth().signIn(with: credential, completion: { (user, error) in
-                if error != nil {
-                    print(error.debugDescription)
-                    return
-                }
-            })
-        }
+        // Attempt to load current user from UserDefaults
+        User.unarchiveCurrentUser()
         
         return true
     }
@@ -55,14 +47,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        if Auth.auth().currentUser != nil {
-            let firebaseAuth = Auth.auth()
-            do {
-                try firebaseAuth.signOut()
-            } catch let signOutError as NSError {
-                print ("Error signing out: %@", signOutError)
-            }
-        }
+//        if Auth.auth().currentUser != nil {
+//            let firebaseAuth = Auth.auth()
+//            do {
+//                try firebaseAuth.signOut()
+//            } catch let signOutError as NSError {
+//                print("Error signing out: %@", signOutError)
+//            }
+//        }
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

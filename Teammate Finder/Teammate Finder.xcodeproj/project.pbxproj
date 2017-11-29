@@ -24,6 +24,7 @@
 		56FE8B9D1EC3A68700F8DCF6 /* Teammate_FinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FE8B9C1EC3A68700F8DCF6 /* Teammate_FinderTests.swift */; };
 		56FE8BA81EC3A68700F8DCF6 /* Teammate_FinderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FE8BA71EC3A68700F8DCF6 /* Teammate_FinderUITests.swift */; };
 		852A6D2FC60A13DD7191B612 /* Pods_Teammate_Finder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED713EC5115E0D0D3498D94C /* Pods_Teammate_Finder.framework */; };
+		862D5ABE1FCC8C7200EAAA31 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862D5ABD1FCC8C7200EAAA31 /* User.swift */; };
 		868B66581FBCB381005EE5C0 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868B66571FBCB381005EE5C0 /* Rank.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		56FE8BA91EC3A68700F8DCF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65C8E3AEFCA4F2F0D4050BA1 /* Pods_Teammate_FinderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teammate_FinderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65E16EF2EE2026897428782C /* Pods-Teammate Finder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teammate Finder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teammate Finder/Pods-Teammate Finder.release.xcconfig"; sourceTree = "<group>"; };
+		862D5ABD1FCC8C7200EAAA31 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		868B66571FBCB381005EE5C0 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 		ED713EC5115E0D0D3498D94C /* Pods_Teammate_Finder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teammate_Finder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				868B66571FBCB381005EE5C0 /* Rank.swift */,
+				862D5ABD1FCC8C7200EAAA31 /* User.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -395,11 +398,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Teammate Finder/Pods-Teammate Finder-resources.sh",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseAuthUI.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseFacebookAuthUI.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseGoogleAuthUI.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebasePhoneAuthUI.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseTwitterAuthUI.bundle",
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseFacebookAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseGoogleAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebasePhoneAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseTwitterAuthUI.bundle,
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
@@ -443,6 +446,7 @@
 				56C4040D1ED652F6006AC7E4 /* TestCell.swift in Sources */,
 				560D43C01ED2709A00D464A6 /* PartnerPostHeader.swift in Sources */,
 				569818EA1ED4A981001EF9F8 /* PartnerPost.swift in Sources */,
+				862D5ABE1FCC8C7200EAAA31 /* User.swift in Sources */,
 				56FE8B8A1EC3A68700F8DCF6 /* WelcomeController.swift in Sources */,
 				560AC7D41ED7B150003ACE51 /* NewPostController.swift in Sources */,
 				56FE8B881EC3A68700F8DCF6 /* AppDelegate.swift in Sources */,

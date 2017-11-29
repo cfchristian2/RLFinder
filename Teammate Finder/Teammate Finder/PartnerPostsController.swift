@@ -56,7 +56,6 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.barStyle = .blackTranslucent
         navigationController?.navigationBar.tintColor = .lightGray
-        navigationController?.navigationBar.isHidden = true
         
         getRocketLeagueStats()
         
