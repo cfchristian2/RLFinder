@@ -52,7 +52,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLATINUM TIER" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0S-rq-rEq">
-                                                    <rect key="frame" x="135" y="31" width="141.5" height="38.5"/>
+                                                    <rect key="frame" x="117" y="31" width="141.5" height="38.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="38.5" id="KzA-q3-2EZ"/>
                                                     </constraints>
@@ -61,30 +61,39 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tX1-2h-Xb1">
-                                                    <rect key="frame" x="41" y="13" width="74.5" height="74.5"/>
+                                                    <rect key="frame" x="23" y="13" width="74.5" height="74.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="tX1-2h-Xb1" secondAttribute="height" multiplier="1:1" id="59w-Ol-Op9"/>
                                                         <constraint firstAttribute="width" constant="74.5" id="dKJ-S3-DsM"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fyn-LH-m9K">
-                                                    <rect key="frame" x="0.0" y="96" width="375" height="4"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <rect key="frame" x="0.0" y="98" width="375" height="2"/>
+                                                    <color key="backgroundColor" red="0.090181164443492889" green="0.090204648673534393" blue="0.090179674327373505" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="4" id="Yom-Mj-gjb"/>
+                                                        <constraint firstAttribute="height" constant="2" id="Yom-Mj-gjb"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.090181164443492889" green="0.090204648673534393" blue="0.090179674327373505" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" red="0.41662684571043618" green="0.42177038701550329" blue="0.42177038701550329" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="caret" translatesAutoresizingMaskIntoConstraints="NO" id="xe2-sF-fEN">
+                                                    <rect key="frame" x="321" y="36" width="27" height="27"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="27" id="BPW-HA-Ivx"/>
+                                                        <constraint firstAttribute="width" constant="27" id="uV0-Kb-Gau"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="X0S-rq-rEq" firstAttribute="centerY" secondItem="wzi-55-bdw" secondAttribute="centerY" id="0j1-Df-Tly"/>
                                                 <constraint firstItem="Fyn-LH-m9K" firstAttribute="leading" secondItem="wzi-55-bdw" secondAttribute="leading" id="69a-tj-BeI"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="xe2-sF-fEN" secondAttribute="trailing" constant="12" id="7du-2G-mw8"/>
                                                 <constraint firstItem="tX1-2h-Xb1" firstAttribute="centerY" secondItem="wzi-55-bdw" secondAttribute="centerY" id="9dd-wS-4vD"/>
-                                                <constraint firstItem="tX1-2h-Xb1" firstAttribute="leading" secondItem="wzi-55-bdw" secondAttribute="leadingMargin" constant="26" id="Shy-in-iNz"/>
+                                                <constraint firstItem="X0S-rq-rEq" firstAttribute="centerX" secondItem="wzi-55-bdw" secondAttribute="centerX" id="Qfp-Dx-phY"/>
                                                 <constraint firstItem="X0S-rq-rEq" firstAttribute="leading" secondItem="tX1-2h-Xb1" secondAttribute="trailing" constant="19.5" id="U6l-T2-uZW"/>
                                                 <constraint firstAttribute="bottom" secondItem="Fyn-LH-m9K" secondAttribute="bottom" constant="-0.5" id="dPQ-Kf-sE5"/>
+                                                <constraint firstItem="xe2-sF-fEN" firstAttribute="centerY" secondItem="wzi-55-bdw" secondAttribute="centerY" id="fZ0-aR-m4J"/>
                                                 <constraint firstAttribute="trailing" secondItem="Fyn-LH-m9K" secondAttribute="trailing" id="hq2-UQ-oKg"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -186,7 +195,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Posts" id="deT-DM-CcW">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="settings" id="dyS-FP-1gA">
-                            <inset key="imageInsets" minX="0.0" minY="-3" maxX="0.0" maxY="-11"/>
+                            <inset key="imageInsets" minX="0.0" minY="-1" maxX="0.0" maxY="-12"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
@@ -200,6 +209,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="caret" width="128" height="128"/>
         <image name="settings" width="50" height="50"/>
     </resources>
 </document>
