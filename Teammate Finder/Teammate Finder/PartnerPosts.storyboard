@@ -16,7 +16,7 @@
             <objects>
                 <navigationController storyboardIdentifier="PostsNavigation" id="q7n-eu-C5I" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2bb-9k-dg7">
-                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -27,7 +27,7 @@
             </objects>
             <point key="canvasLocation" x="-873" y="-1"/>
         </scene>
-        <!--Partner Posts Controller-->
+        <!--Posts-->
         <scene sceneID="e2g-hc-pvT">
             <objects>
                 <viewController id="LcV-0p-JDh" customClass="PartnerPostsController" customModule="Teammate_Finder" customModuleProvider="target" sceneMemberID="viewController">
@@ -40,7 +40,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ocA-hv-2M2">
-                                <rect key="frame" x="0.0" y="68" width="375" height="599"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.15684100989999999" green="0.1568752527" blue="0.15683883430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" white="0.2162543403138889" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -172,7 +172,12 @@
                             <constraint firstAttribute="trailing" secondItem="ocA-hv-2M2" secondAttribute="trailing" id="t89-F8-pi7"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="deT-DM-CcW"/>
+                    <navigationItem key="navigationItem" title="Posts" id="deT-DM-CcW">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="settings" id="dyS-FP-1gA">
+                            <inset key="imageInsets" minX="0.0" minY="-3" maxX="0.0" maxY="-11"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="postsTable" destination="ocA-hv-2M2" id="COy-aW-uWH"/>
                     </connections>
@@ -182,4 +187,7 @@
             <point key="canvasLocation" x="-103.2" y="-1.3493253373313345"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="settings" width="50" height="50"/>
+    </resources>
 </document>

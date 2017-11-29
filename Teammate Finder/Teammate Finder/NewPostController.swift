@@ -28,10 +28,6 @@ class NewPostController: UIViewController, UITextViewDelegate, SJFluidSegmentedC
         ref = Database.database().reference()
         
         postButton.tintColor = view.tintColor
-        navigationController?.navigationBar.isHidden = false
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.barStyle = .blackTranslucent
-        navigationController?.navigationBar.tintColor = .lightGray
         view.backgroundColor = UIColor(red: 40/255, green: 40/255, blue: 40/255, alpha: 1)
         
         postBody.delegate = self

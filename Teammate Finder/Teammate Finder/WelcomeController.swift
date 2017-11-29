@@ -30,11 +30,7 @@ class WelcomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if (FBSDKAccessToken.current() != nil) {
-            let storyboard: UIStoryboard = UIStoryboard(name: "PartnerPosts", bundle: nil)
-            let vc: UINavigationController = storyboard.instantiateViewController(withIdentifier: "PostsNavigation") as! UINavigationController
-            self.present(vc, animated: true, completion: nil)
-        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,12 +61,13 @@ class WelcomeController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             self.ref.child("Login").observeSingleEvent(of: .value, with: {(snapshot) in
                 
                 if snapshot.hasChild(userId) {
-                    // Already has account, go to posts
-                    
+                    // Already has account, load user and go to posts
+                    User.loadUser(uid: userId)
                 }
                 else {
-                    // Potentially go to a user edit page?
-                    // For now, every user new or existing will go to posts page
+                    // Create user in Firebase, set current user and then go to posts page
+                    User.currentUser = User(uid: userId)
+                    User.currentUser?.email = user?.email
                     self.ref.child("users").setValue(userId)
                 }
                 

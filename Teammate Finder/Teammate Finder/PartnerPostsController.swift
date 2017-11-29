@@ -53,11 +53,9 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         
         automaticallyAdjustsScrollViewInsets = false
         
-        
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.barStyle = .blackTranslucent
         navigationController?.navigationBar.tintColor = .lightGray
-        navigationController?.navigationBar.isHidden = true
         
         getRocketLeagueStats()
         
@@ -301,9 +299,9 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         }
         
         if !isHidden[gestureRecognizer.section!] {
-            postsTable.insertRows(at: indexPaths, with: .top)
+            postsTable.insertRows(at: indexPaths, with: .fade)
         } else {
-            postsTable.deleteRows(at: indexPaths, with: .top)
+            postsTable.deleteRows(at: indexPaths, with: .fade)
         }
     }
     

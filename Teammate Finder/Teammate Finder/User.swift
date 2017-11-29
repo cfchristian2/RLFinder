@@ -13,13 +13,13 @@ class User {
     
     static var currentUser: User?
     
-    let uid: String
+    var uid: String?
     
     var email: String?
     
-    var platforms: [String : String]?
+    var platform: String?
     
-    var usernames: [String : String]?
+    var username: String?
     
     init(uid: String) {
         self.uid = uid
@@ -27,6 +27,25 @@ class User {
     
     static func loadUser(uid: String) {
         let ref = Database.database().reference()
-        //ref.child("users").child(uid).observeSingleEvent(of: .value, with: <#T##(DataSnapshot) -> Void#>)
+        ref.child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? [String : Any]
+            User.currentUser = User(uid: uid)
+            User.currentUser?.email = value?["email"] as? String ?? ""
+            User.currentUser?.platform = value?["platform"] as? String ?? ""
+            User.currentUser?.username = value?["username"] as? String ?? ""
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    static func archiveCurrentUser() {
+        let data = NSKeyedArchiver.archivedData(withRootObject: User.currentUser!)
+        UserDefaults.standard.set(data, forKey: "currentUser")
+    }
+    
+    static func unarchiveCurrentUser() {
+        if let data = UserDefaults.standard.object(forKey: "currentUser") as? Data {
+            User.currentUser = NSKeyedUnarchiver.unarchiveObject(with: data) as? User
+        }
     }
 }
