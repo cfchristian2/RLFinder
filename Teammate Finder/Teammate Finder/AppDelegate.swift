@@ -8,17 +8,18 @@
 
 import UIKit
 import Firebase
-import FBSDKCoreKit
+import FBSDKLoginKit
+import FirebaseAuthUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UIApplication.shared.statusBarStyle = .lightContent
         FirebaseApp.configure()
+        
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Attempt to load current user from UserDefaults
@@ -32,12 +33,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKAppEvents.activateApp()
     }
     
-    let facebookReadPermissions = ["public_profile", "email", "user_friends"]
+    let facebookReadPermissions = ["email"]
     //Some other options: "user_about_me", "user_birthday", "user_hometown", "user_likes", "user_interests", "user_photos", "friends_photos", "friends_hometown", "friends_location", "friends_education_history"
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        let handled: Bool = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
-        // Add any custom logic here.
+        var handled: Bool = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        
+        handled = FUIAuth.defaultAuthUI()?.handleOpen(url, sourceApplication: sourceApplication) ?? false
+        
         return handled
     }
 
@@ -58,16 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        if FBSDKAccessToken.current() != nil {
-            let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-            
-            Auth.auth().signIn(with: credential) { (user, error) in
-                if error != nil {
-                    print(error.debugDescription)
-                    return
-                }
-            }
-        }
+        
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

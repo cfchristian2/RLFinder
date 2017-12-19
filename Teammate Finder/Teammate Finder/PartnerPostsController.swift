@@ -10,16 +10,16 @@
 
 import UIKit
 import Firebase
+import FirebaseAuthUI
+import FirebaseFacebookAuthUI
 
-class PartnerPostsController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate{
+class PartnerPostsController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, FUIAuthDelegate {
     
 
     @IBAction func toSettings(_ sender: Any) {
         toSettings()
     }
     @IBOutlet weak var postsTable: UITableView!
-    var platform: String!
-    var username: String!
     var ref: DatabaseReference!
     
     // This storage will probably change once database is implemented
@@ -38,6 +38,11 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     var floatingButtonIsVisible = true
     var floatingButtonView: UIImageView!
     var lastContentOffset: CGPoint!
+    
+    // Firebase UI options
+    let providers: [FUIAuthProvider] = [
+        FUIFacebookAuth()
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +52,7 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         postsTable.delegate = self
         postsTable.dataSource = self
         
-        floatingButtonView = UIImageView(frame: CGRect(x:self.view.frame.maxX-100, y:self.view.frame.maxY-120, width:75, height:75))
+        floatingButtonView = UIImageView(frame: CGRect(x:self.view.frame.maxX-100, y:self.view.frame.maxY-120, width:76, height:76))
         floatingButtonView.image = #imageLiteral(resourceName: "addButton")
         floatingButtonView.layer.cornerRadius = floatingButtonView.frame.size.height/2
         floatingButtonView.clipsToBounds = true
@@ -101,7 +106,7 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
                     case "grandChampionPosts":
                         self.grandChampionPosts.append(post["postBody"] ?? postId)
                     default:
-                        print("Hmmmmmmm")
+                        print("Post type was not recorded correctly in Firebase")
                     }
                 }
             }
@@ -180,48 +185,38 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = postsTable.dequeueReusableCell(withIdentifier: "PostHeader") as! PartnerPostHeader
-        var postCount = 0
         
         switch (section) {
         case 0:
             headerCell.tierName.text = "BRONZE TIER"
             headerCell.tierIcon.image = #imageLiteral(resourceName: "bronze3")
-            postCount = bronzePosts.count
         case 1:
             headerCell.tierName.text = "SILVER TIER"
             headerCell.tierIcon.image = #imageLiteral(resourceName: "silver3")
-            postCount = silverPosts.count
         case 2:
             headerCell.tierName.text = "GOLD TIER"
             headerCell.tierIcon.image = #imageLiteral(resourceName: "gold3")
-            postCount = goldPosts.count
         case 3:
             headerCell.tierName.text = "PLATINUM TIER"
             headerCell.tierIcon.image = #imageLiteral(resourceName: "platinum3")
-            postCount = platinumPosts.count
         case 4:
             headerCell.tierName.text = "DIAMOND TIER"
             headerCell.tierIcon.image = #imageLiteral(resourceName: "diamond3")
-            postCount = diamondPosts.count
         case 5:
             headerCell.tierName.text = "CHAMPION TIER"
             headerCell.tierIcon.image = #imageLiteral(resourceName: "champion3")
-            postCount = championPosts.count
         case 6:
             headerCell.tierName.text = "GRAND CHAMP"
             headerCell.tierIcon.image = #imageLiteral(resourceName: "grand champion")
-            postCount = grandChampionPosts.count
         default:
             headerCell.tierName.text = "Uh Oh"
         }
         
         let headerTap = SectionHeaderTap(target: self, action: #selector(expandPosts(gestureRecognizer:)))
         headerTap.section = section
+        headerTap.cell = headerCell
         headerCell.contentView.addGestureRecognizer(headerTap)
         headerCell.contentView.backgroundColor = UIColor(red: 40/255, green: 40/255, blue: 40/255, alpha: 1)
-        if postCount == 0 {
-            headerCell.caret.isHidden = true
-        }
         
         return headerCell.contentView
     }
@@ -298,8 +293,11 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         
         if !isHidden[gestureRecognizer.section!] {
             postsTable.insertRows(at: indexPaths, with: .fade)
+            gestureRecognizer.cell.caret.image = #imageLiteral(resourceName: "angle-up")
+            
         } else {
             postsTable.deleteRows(at: indexPaths, with: .fade)
+            gestureRecognizer.cell.caret.image = #imageLiteral(resourceName: "angle-down")
         }
     }
     
@@ -344,17 +342,51 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     // MARK: Screen Navigation
     
     func toCreatePost() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "NewPost", bundle: nil)
+        if User.currentUser == nil {
+            presentAlertController(withTitle: "Please Log In", message: "You need to log in in order to post")
+        }
         
+        let storyboard: UIStoryboard = UIStoryboard(name: "NewPost", bundle: nil)
         let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "NewPostController")
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func toSettings() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Welcome", bundle: nil)
-        
-        let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "SettingsController")
-        navigationController?.pushViewController(vc, animated: true)
+        if User.currentUser == nil {
+            let authUI = FUIAuth.defaultAuthUI()
+            authUI?.delegate = self
+            authUI?.providers = providers
+            let authViewController = authUI!.authViewController()
+            self.present(authViewController, animated: true, completion: nil)
+        } else {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Settings", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "SettingsController")
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    //-------------------------------------------------------------------------------------------//
+    // MARK: Firebase UI
+    
+    func authUI(_ authUI: FUIAuth, didSignInWith user: FirebaseAuth.User?, error: Error?) {
+        User.currentUser = User(uid: user!.uid)
+        User.currentUser?.email = user!.email
+        User.currentUser?.uid = user!.uid
+        User.archiveCurrentUser()
+        self.ref.child("users").setValue(user!.uid)
+    }
+    
+    //-------------------------------------------------------------------------------------------//
+    // MARK: Alert Creation
+    
+    func presentAlertController(withTitle title: String?, message: String?) {
+        let alertController = UIAlertController(title: title,
+                                                message: message,
+                                                preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok",
+                                                style: .default,
+                                                handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
     
     //-------------------------------------------------------------------------------------------//
@@ -403,4 +435,5 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
 
 class SectionHeaderTap: UITapGestureRecognizer {
     var section: Int!
+    var cell: PartnerPostHeader!
 }

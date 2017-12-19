@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-class User {
+class User: NSObject, NSCoding {
     
     static var currentUser: User?
     
@@ -22,7 +22,16 @@ class User {
     var username: String?
     
     init(uid: String) {
+        super.init()
         self.uid = uid
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        //aCoder.encode(name, forKey: "name")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        
     }
     
     static func loadUser(uid: String) {
@@ -38,14 +47,25 @@ class User {
         }
     }
     
+    // Save user properties in UserDefaults
     static func archiveCurrentUser() {
         let data = NSKeyedArchiver.archivedData(withRootObject: User.currentUser!)
         UserDefaults.standard.set(data, forKey: "currentUser")
     }
     
-    static func unarchiveCurrentUser() {
-        if let data = UserDefaults.standard.object(forKey: "currentUser") as? Data {
-            User.currentUser = NSKeyedUnarchiver.unarchiveObject(with: data) as? User
+    // Load user properties from UserDefaults, returns true if current user exists in storage
+    static func unarchiveCurrentUser() -> Bool {
+        if let data = UserDefaults.standard.object(forKey: "currentUser") as? NSData {
+            User.currentUser = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as? User
+            return true
         }
+        return false
+    }
+    
+    // Remove current user from UserDefaults, called when user logs out
+    static func logOutCurrentUser() {
+        UserDefaults.standard.removeObject(forKey: "currentUser")
+        User.currentUser = nil
+        
     }
 }
