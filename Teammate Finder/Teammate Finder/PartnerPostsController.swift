@@ -10,12 +10,16 @@
 
 import UIKit
 import Firebase
+import FirebaseAuthUI
+import FirebaseFacebookAuthUI
 
-class PartnerPostsController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate{
+class PartnerPostsController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, FUIAuthDelegate {
     
+
+    @IBAction func toSettings(_ sender: Any) {
+        toSettings()
+    }
     @IBOutlet weak var postsTable: UITableView!
-    var platform: String!
-    var username: String!
     var ref: DatabaseReference!
     
     // This storage will probably change once database is implemented
@@ -34,16 +38,27 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     var floatingButtonIsVisible = true
     var floatingButtonView: UIImageView!
     var lastContentOffset: CGPoint!
+    
+    // Firebase UI options
+    var authUI: FUIAuth?
+    let providers: [FUIAuthProvider] = [
+        FUIFacebookAuth()
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // FirebaseUI auth delegate setup
+        authUI = FUIAuth.defaultAuthUI()
+        authUI?.delegate = self
+        authUI?.providers = providers
         
         ref = Database.database().reference()
         
         postsTable.delegate = self
         postsTable.dataSource = self
         
-        floatingButtonView = UIImageView(frame: CGRect(x:self.view.frame.maxX-100, y:self.view.frame.maxY-120, width:75, height:75))
+        floatingButtonView = UIImageView(frame: CGRect(x:self.view.frame.maxX-100, y:self.view.frame.maxY-120, width:76, height:76))
         floatingButtonView.image = #imageLiteral(resourceName: "addButton")
         floatingButtonView.layer.cornerRadius = floatingButtonView.frame.size.height/2
         floatingButtonView.clipsToBounds = true
@@ -58,8 +73,6 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         navigationController?.navigationBar.tintColor = .lightGray
         
         getRocketLeagueStats()
-        
-        readDatabase()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -85,21 +98,21 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
                 for (postId, post) in posts as! [String : [String : String]] {
                     switch (postType) {
                     case "bronzePosts":
-                        self.bronzePosts.append(postId)
+                        self.bronzePosts.append(post["postBody"] ?? postId)
                     case "silverPosts":
-                        self.silverPosts.append(postId)
+                        self.silverPosts.append(post["postBody"] ?? postId)
                     case "goldPosts":
-                        self.goldPosts.append(postId)
+                        self.goldPosts.append(post["postBody"] ?? postId)
                     case "platinumPosts":
-                        self.platinumPosts.append(postId)
+                        self.platinumPosts.append(post["postBody"] ?? postId)
                     case "diamondPosts":
-                        self.diamondPosts.append(postId)
+                        self.diamondPosts.append(post["postBody"] ?? postId)
                     case "championPosts":
-                        self.championPosts.append(postId)
+                        self.championPosts.append(post["postBody"] ?? postId)
                     case "grandChampionPosts":
-                        self.grandChampionPosts.append(postId)
+                        self.grandChampionPosts.append(post["postBody"] ?? postId)
                     default:
-                        print("Hmmmmmmm")
+                        print("Post type was not recorded correctly in Firebase")
                     }
                 }
             }
@@ -199,7 +212,7 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
             headerCell.tierName.text = "CHAMPION TIER"
             headerCell.tierIcon.image = #imageLiteral(resourceName: "champion3")
         case 6:
-            headerCell.tierName.text = "GRAND CHAMPION"
+            headerCell.tierName.text = "GRAND CHAMP"
             headerCell.tierIcon.image = #imageLiteral(resourceName: "grand champion")
         default:
             headerCell.tierName.text = "Uh Oh"
@@ -207,6 +220,7 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         
         let headerTap = SectionHeaderTap(target: self, action: #selector(expandPosts(gestureRecognizer:)))
         headerTap.section = section
+        headerTap.cell = headerCell
         headerCell.contentView.addGestureRecognizer(headerTap)
         headerCell.contentView.backgroundColor = UIColor(red: 40/255, green: 40/255, blue: 40/255, alpha: 1)
         
@@ -238,6 +252,9 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         
         let cell = postsTable.dequeueReusableCell(withIdentifier: "Post") as! PartnerPost
         cell.postBody.text = selectedPostArray[indexPath.row]
+        cell.layer.cornerRadius = 10
+        cell.layer.borderWidth = 1
+        cell.layer.masksToBounds = true
         return cell
     }
     
@@ -282,8 +299,11 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         
         if !isHidden[gestureRecognizer.section!] {
             postsTable.insertRows(at: indexPaths, with: .fade)
+            gestureRecognizer.cell.caret.image = #imageLiteral(resourceName: "angle-up")
+            
         } else {
             postsTable.deleteRows(at: indexPaths, with: .fade)
+            gestureRecognizer.cell.caret.image = #imageLiteral(resourceName: "angle-down")
         }
     }
     
@@ -328,11 +348,56 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     // MARK: Screen Navigation
     
     func toCreatePost() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "NewPost", bundle: nil)
+        if User.currentUser == nil {
+            presentAlertController(withTitle: "Please Log In", message: "You need to log in in order to post")
+        }
         
+        let storyboard: UIStoryboard = UIStoryboard(name: "NewPost", bundle: nil)
         let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "NewPostController")
-        //self.present(vc, animated: true, completion: nil)
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func toSettings() {
+        if User.currentUser == nil {
+            let authViewController = authUI?.authViewController()
+            self.present(authViewController!, animated: true, completion: nil)
+        } else {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Settings", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "SettingsController")
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    //-------------------------------------------------------------------------------------------//
+    // MARK: Firebase UI
+    
+    func authUI(_ authUI: FUIAuth, didSignInWith user: FirebaseAuth.User?, error: Error?) {
+        if error == nil {
+            if user != nil {
+                User.currentUser = User(uid: user!.uid)
+                User.currentUser?.email = user!.email
+                User.currentUser?.uid = user!.uid
+                User.archiveCurrentUser()
+                self.ref.child("users").setValue(user!.uid)
+            }
+        }
+    }
+    
+    func emailEntryViewController(forAuthUI authUI: FUIAuth) -> FUIEmailEntryViewController {
+        return FUICustomEmailEntryViewController(nibName: "FUICustomEmailEntryViewController", bundle: Bundle.main, authUI: authUI)
+    }
+    
+    //-------------------------------------------------------------------------------------------//
+    // MARK: Alert Creation
+    
+    func presentAlertController(withTitle title: String?, message: String?) {
+        let alertController = UIAlertController(title: title,
+                                                message: message,
+                                                preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok",
+                                                style: .default,
+                                                handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
     
     //-------------------------------------------------------------------------------------------//
@@ -381,4 +446,5 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
 
 class SectionHeaderTap: UITapGestureRecognizer {
     var section: Int!
+    var cell: PartnerPostHeader!
 }

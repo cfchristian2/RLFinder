@@ -17,13 +17,16 @@
 		569818EA1ED4A981001EF9F8 /* PartnerPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569818E91ED4A981001EF9F8 /* PartnerPost.swift */; };
 		56C4040D1ED652F6006AC7E4 /* TestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C4040C1ED652F6006AC7E4 /* TestCell.swift */; };
 		56FE8B881EC3A68700F8DCF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FE8B871EC3A68700F8DCF6 /* AppDelegate.swift */; };
-		56FE8B8A1EC3A68700F8DCF6 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FE8B891EC3A68700F8DCF6 /* WelcomeController.swift */; };
-		56FE8B8D1EC3A68700F8DCF6 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56FE8B8B1EC3A68700F8DCF6 /* Welcome.storyboard */; };
 		56FE8B8F1EC3A68700F8DCF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56FE8B8E1EC3A68700F8DCF6 /* Assets.xcassets */; };
 		56FE8B921EC3A68700F8DCF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56FE8B901EC3A68700F8DCF6 /* LaunchScreen.storyboard */; };
 		56FE8B9D1EC3A68700F8DCF6 /* Teammate_FinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FE8B9C1EC3A68700F8DCF6 /* Teammate_FinderTests.swift */; };
 		56FE8BA81EC3A68700F8DCF6 /* Teammate_FinderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FE8BA71EC3A68700F8DCF6 /* Teammate_FinderUITests.swift */; };
 		852A6D2FC60A13DD7191B612 /* Pods_Teammate_Finder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED713EC5115E0D0D3498D94C /* Pods_Teammate_Finder.framework */; };
+		8624082720168B480090FAA7 /* FUICustomEmailEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624082620168B470090FAA7 /* FUICustomEmailEntryViewController.swift */; };
+		8624082920168C280090FAA7 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8624082820168C280090FAA7 /* Settings.storyboard */; };
+		8624082B20168C430090FAA7 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624082A20168C430090FAA7 /* SettingsController.swift */; };
+		8624082D20168C4A0090FAA7 /* OnboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624082C20168C4A0090FAA7 /* OnboardTableViewCell.swift */; };
+		8624082F20168C7E0090FAA7 /* FUICustomEmailEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8624082E20168C7E0090FAA7 /* FUICustomEmailEntryViewController.xib */; };
 		862D5ABE1FCC8C7200EAAA31 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862D5ABD1FCC8C7200EAAA31 /* User.swift */; };
 		868B66581FBCB381005EE5C0 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868B66571FBCB381005EE5C0 /* Rank.swift */; };
 /* End PBXBuildFile section */
@@ -59,8 +62,6 @@
 		56C4040C1ED652F6006AC7E4 /* TestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCell.swift; sourceTree = "<group>"; };
 		56FE8B841EC3A68700F8DCF6 /* Teammate Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Teammate Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56FE8B871EC3A68700F8DCF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		56FE8B891EC3A68700F8DCF6 /* WelcomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
-		56FE8B8C1EC3A68700F8DCF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Welcome.storyboard; sourceTree = "<group>"; };
 		56FE8B8E1EC3A68700F8DCF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56FE8B911EC3A68700F8DCF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		56FE8B931EC3A68700F8DCF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -72,6 +73,11 @@
 		56FE8BA91EC3A68700F8DCF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65C8E3AEFCA4F2F0D4050BA1 /* Pods_Teammate_FinderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teammate_FinderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65E16EF2EE2026897428782C /* Pods-Teammate Finder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teammate Finder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teammate Finder/Pods-Teammate Finder.release.xcconfig"; sourceTree = "<group>"; };
+		8624082620168B470090FAA7 /* FUICustomEmailEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FUICustomEmailEntryViewController.swift; sourceTree = "<group>"; };
+		8624082820168C280090FAA7 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		8624082A20168C430090FAA7 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		8624082C20168C4A0090FAA7 /* OnboardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardTableViewCell.swift; sourceTree = "<group>"; };
+		8624082E20168C7E0090FAA7 /* FUICustomEmailEntryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FUICustomEmailEntryViewController.xib; sourceTree = "<group>"; };
 		862D5ABD1FCC8C7200EAAA31 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		868B66571FBCB381005EE5C0 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 		ED713EC5115E0D0D3498D94C /* Pods_Teammate_Finder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teammate_Finder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,13 +118,14 @@
 			name = "New Post";
 			sourceTree = "<group>";
 		};
-		562C118D1ECFAFB00072A5C2 /* Welcome */ = {
+		562C118D1ECFAFB00072A5C2 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				56FE8B8B1EC3A68700F8DCF6 /* Welcome.storyboard */,
-				56FE8B891EC3A68700F8DCF6 /* WelcomeController.swift */,
+				8624082820168C280090FAA7 /* Settings.storyboard */,
+				8624082A20168C430090FAA7 /* SettingsController.swift */,
+				8624082C20168C4A0090FAA7 /* OnboardTableViewCell.swift */,
 			);
-			name = Welcome;
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		562C118E1ECFB0640072A5C2 /* Posts */ = {
@@ -129,6 +136,8 @@
 				560D43BF1ED2709A00D464A6 /* PartnerPostHeader.swift */,
 				569818E91ED4A981001EF9F8 /* PartnerPost.swift */,
 				56C4040C1ED652F6006AC7E4 /* TestCell.swift */,
+				8624082620168B470090FAA7 /* FUICustomEmailEntryViewController.swift */,
+				8624082E20168C7E0090FAA7 /* FUICustomEmailEntryViewController.xib */,
 			);
 			name = Posts;
 			sourceTree = "<group>";
@@ -161,7 +170,7 @@
 				868B66561FBCB343005EE5C0 /* Models */,
 				560AC7D01ED7B11C003ACE51 /* New Post */,
 				562C118E1ECFB0640072A5C2 /* Posts */,
-				562C118D1ECFAFB00072A5C2 /* Welcome */,
+				562C118D1ECFAFB00072A5C2 /* Settings */,
 				56FE8B871EC3A68700F8DCF6 /* AppDelegate.swift */,
 				56FE8B8E1EC3A68700F8DCF6 /* Assets.xcassets */,
 				56FE8B901EC3A68700F8DCF6 /* LaunchScreen.storyboard */,
@@ -332,9 +341,10 @@
 				560AC7D21ED7B132003ACE51 /* NewPost.storyboard in Resources */,
 				562C11901ECFB32B0072A5C2 /* PartnerPosts.storyboard in Resources */,
 				56FE8B8F1EC3A68700F8DCF6 /* Assets.xcassets in Resources */,
-				56FE8B8D1EC3A68700F8DCF6 /* Welcome.storyboard in Resources */,
 				5606FA231ED8BE9900351D28 /* testPhoto.jpg in Resources */,
 				567BA5101ED8CD3400DD821E /* GoogleService-Info.plist in Resources */,
+				8624082F20168C7E0090FAA7 /* FUICustomEmailEntryViewController.xib in Resources */,
+				8624082920168C280090FAA7 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,26 +373,46 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Teammate Finder/Pods-Teammate Finder-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Floaty/Floaty.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SJFluidSegmentedControl/SJFluidSegmentedControl.framework",
+				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Floaty.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SJFluidSegmentedControl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -445,10 +475,12 @@
 				868B66581FBCB381005EE5C0 /* Rank.swift in Sources */,
 				56C4040D1ED652F6006AC7E4 /* TestCell.swift in Sources */,
 				560D43C01ED2709A00D464A6 /* PartnerPostHeader.swift in Sources */,
+				8624082720168B480090FAA7 /* FUICustomEmailEntryViewController.swift in Sources */,
 				569818EA1ED4A981001EF9F8 /* PartnerPost.swift in Sources */,
+				8624082B20168C430090FAA7 /* SettingsController.swift in Sources */,
 				862D5ABE1FCC8C7200EAAA31 /* User.swift in Sources */,
-				56FE8B8A1EC3A68700F8DCF6 /* WelcomeController.swift in Sources */,
 				560AC7D41ED7B150003ACE51 /* NewPostController.swift in Sources */,
+				8624082D20168C4A0090FAA7 /* OnboardTableViewCell.swift in Sources */,
 				56FE8B881EC3A68700F8DCF6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,14 +517,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		56FE8B8B1EC3A68700F8DCF6 /* Welcome.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				56FE8B8C1EC3A68700F8DCF6 /* Base */,
-			);
-			name = Welcome.storyboard;
-			sourceTree = "<group>";
-		};
 		56FE8B901EC3A68700F8DCF6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
