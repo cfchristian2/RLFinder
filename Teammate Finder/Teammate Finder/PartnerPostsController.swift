@@ -360,6 +360,8 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     func toSettings() {
         if User.currentUser == nil {
             let authViewController = authUI?.authViewController()
+            authViewController?.navigationBar.barStyle = .black
+            authViewController?.navigationBar.tintColor = .white
             self.present(authViewController!, animated: true, completion: nil)
         } else {
             let storyboard: UIStoryboard = UIStoryboard(name: "Settings", bundle: nil)
@@ -381,6 +383,10 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
                 self.ref.child("users").setValue(user!.uid)
             }
         }
+    }
+    
+    func authPickerViewController(forAuthUI authUI: FUIAuth) -> FUIAuthPickerViewController {
+        return FUICustomAuthPickerViewController(nibName: "FUICustomAuthPickerViewController", bundle: Bundle.main, authUI: authUI)
     }
     
     func emailEntryViewController(forAuthUI authUI: FUIAuth) -> FUIEmailEntryViewController {

@@ -27,7 +27,7 @@ class User: NSObject, NSCoding {
     }
     
     func encode(with aCoder: NSCoder) {
-        //aCoder.encode(name, forKey: "name")
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -66,6 +66,5 @@ class User: NSObject, NSCoding {
     static func logOutCurrentUser() {
         UserDefaults.standard.removeObject(forKey: "currentUser")
         User.currentUser = nil
-        
     }
 }

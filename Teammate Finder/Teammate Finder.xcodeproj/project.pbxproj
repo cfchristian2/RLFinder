@@ -26,9 +26,11 @@
 		8624082920168C280090FAA7 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8624082820168C280090FAA7 /* Settings.storyboard */; };
 		8624082B20168C430090FAA7 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624082A20168C430090FAA7 /* SettingsController.swift */; };
 		8624082D20168C4A0090FAA7 /* OnboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624082C20168C4A0090FAA7 /* OnboardTableViewCell.swift */; };
-		8624082F20168C7E0090FAA7 /* FUICustomEmailEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8624082E20168C7E0090FAA7 /* FUICustomEmailEntryViewController.xib */; };
 		862D5ABE1FCC8C7200EAAA31 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862D5ABD1FCC8C7200EAAA31 /* User.swift */; };
 		868B66581FBCB381005EE5C0 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868B66571FBCB381005EE5C0 /* Rank.swift */; };
+		86C55D852017848D0001252D /* FUICustomEmailEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86C55D842017848D0001252D /* FUICustomEmailEntryViewController.xib */; };
+		86C55D87201785460001252D /* FUICustomAuthPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C55D86201785460001252D /* FUICustomAuthPickerViewController.swift */; };
+		86C55D89201785E70001252D /* FUICustomAuthPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86C55D88201785E60001252D /* FUICustomAuthPickerViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,9 +79,11 @@
 		8624082820168C280090FAA7 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		8624082A20168C430090FAA7 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		8624082C20168C4A0090FAA7 /* OnboardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardTableViewCell.swift; sourceTree = "<group>"; };
-		8624082E20168C7E0090FAA7 /* FUICustomEmailEntryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FUICustomEmailEntryViewController.xib; sourceTree = "<group>"; };
 		862D5ABD1FCC8C7200EAAA31 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		868B66571FBCB381005EE5C0 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
+		86C55D842017848D0001252D /* FUICustomEmailEntryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FUICustomEmailEntryViewController.xib; sourceTree = "<group>"; };
+		86C55D86201785460001252D /* FUICustomAuthPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FUICustomAuthPickerViewController.swift; sourceTree = "<group>"; };
+		86C55D88201785E60001252D /* FUICustomAuthPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FUICustomAuthPickerViewController.xib; sourceTree = "<group>"; };
 		ED713EC5115E0D0D3498D94C /* Pods_Teammate_Finder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teammate_Finder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -136,8 +140,10 @@
 				560D43BF1ED2709A00D464A6 /* PartnerPostHeader.swift */,
 				569818E91ED4A981001EF9F8 /* PartnerPost.swift */,
 				56C4040C1ED652F6006AC7E4 /* TestCell.swift */,
+				86C55D86201785460001252D /* FUICustomAuthPickerViewController.swift */,
+				86C55D88201785E60001252D /* FUICustomAuthPickerViewController.xib */,
 				8624082620168B470090FAA7 /* FUICustomEmailEntryViewController.swift */,
-				8624082E20168C7E0090FAA7 /* FUICustomEmailEntryViewController.xib */,
+				86C55D842017848D0001252D /* FUICustomEmailEntryViewController.xib */,
 			);
 			name = Posts;
 			sourceTree = "<group>";
@@ -338,12 +344,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				56FE8B921EC3A68700F8DCF6 /* LaunchScreen.storyboard in Resources */,
+				86C55D89201785E70001252D /* FUICustomAuthPickerViewController.xib in Resources */,
 				560AC7D21ED7B132003ACE51 /* NewPost.storyboard in Resources */,
 				562C11901ECFB32B0072A5C2 /* PartnerPosts.storyboard in Resources */,
 				56FE8B8F1EC3A68700F8DCF6 /* Assets.xcassets in Resources */,
 				5606FA231ED8BE9900351D28 /* testPhoto.jpg in Resources */,
 				567BA5101ED8CD3400DD821E /* GoogleService-Info.plist in Resources */,
-				8624082F20168C7E0090FAA7 /* FUICustomEmailEntryViewController.xib in Resources */,
+				86C55D852017848D0001252D /* FUICustomEmailEntryViewController.xib in Resources */,
 				8624082920168C280090FAA7 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,6 +486,7 @@
 				569818EA1ED4A981001EF9F8 /* PartnerPost.swift in Sources */,
 				8624082B20168C430090FAA7 /* SettingsController.swift in Sources */,
 				862D5ABE1FCC8C7200EAAA31 /* User.swift in Sources */,
+				86C55D87201785460001252D /* FUICustomAuthPickerViewController.swift in Sources */,
 				560AC7D41ED7B150003ACE51 /* NewPostController.swift in Sources */,
 				8624082D20168C4A0090FAA7 /* OnboardTableViewCell.swift in Sources */,
 				56FE8B881EC3A68700F8DCF6 /* AppDelegate.swift in Sources */,
