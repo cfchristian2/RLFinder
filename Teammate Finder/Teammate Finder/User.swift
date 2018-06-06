@@ -54,12 +54,10 @@ class User: NSObject, NSCoding {
     }
     
     // Load user properties from UserDefaults, returns true if current user exists in storage
-    static func unarchiveCurrentUser() -> Bool {
+    static func unarchiveCurrentUser() {
         if let data = UserDefaults.standard.object(forKey: "currentUser") as? NSData {
             User.currentUser = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as? User
-            return true
         }
-        return false
     }
     
     // Remove current user from UserDefaults, called when user logs out

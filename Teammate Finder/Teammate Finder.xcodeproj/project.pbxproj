@@ -22,6 +22,8 @@
 		56FE8B9D1EC3A68700F8DCF6 /* Teammate_FinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FE8B9C1EC3A68700F8DCF6 /* Teammate_FinderTests.swift */; };
 		56FE8BA81EC3A68700F8DCF6 /* Teammate_FinderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FE8BA71EC3A68700F8DCF6 /* Teammate_FinderUITests.swift */; };
 		852A6D2FC60A13DD7191B612 /* Pods_Teammate_Finder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED713EC5115E0D0D3498D94C /* Pods_Teammate_Finder.framework */; };
+		861B49872022B4DA003BBD9D /* PostDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 861B49862022B4DA003BBD9D /* PostDetails.storyboard */; };
+		861B49892022B4ED003BBD9D /* PostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861B49882022B4ED003BBD9D /* PostDetailsViewController.swift */; };
 		8624082720168B480090FAA7 /* FUICustomEmailEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624082620168B470090FAA7 /* FUICustomEmailEntryViewController.swift */; };
 		8624082920168C280090FAA7 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8624082820168C280090FAA7 /* Settings.storyboard */; };
 		8624082B20168C430090FAA7 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624082A20168C430090FAA7 /* SettingsController.swift */; };
@@ -75,6 +77,8 @@
 		56FE8BA91EC3A68700F8DCF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65C8E3AEFCA4F2F0D4050BA1 /* Pods_Teammate_FinderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teammate_FinderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65E16EF2EE2026897428782C /* Pods-Teammate Finder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teammate Finder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teammate Finder/Pods-Teammate Finder.release.xcconfig"; sourceTree = "<group>"; };
+		861B49862022B4DA003BBD9D /* PostDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostDetails.storyboard; sourceTree = "<group>"; };
+		861B49882022B4ED003BBD9D /* PostDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsViewController.swift; sourceTree = "<group>"; };
 		8624082620168B470090FAA7 /* FUICustomEmailEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FUICustomEmailEntryViewController.swift; sourceTree = "<group>"; };
 		8624082820168C280090FAA7 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		8624082A20168C430090FAA7 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
@@ -174,8 +178,9 @@
 			isa = PBXGroup;
 			children = (
 				868B66561FBCB343005EE5C0 /* Models */,
-				560AC7D01ED7B11C003ACE51 /* New Post */,
 				562C118E1ECFB0640072A5C2 /* Posts */,
+				560AC7D01ED7B11C003ACE51 /* New Post */,
+				861B49852022B4AB003BBD9D /* Post Details */,
 				562C118D1ECFAFB00072A5C2 /* Settings */,
 				56FE8B871EC3A68700F8DCF6 /* AppDelegate.swift */,
 				56FE8B8E1EC3A68700F8DCF6 /* Assets.xcassets */,
@@ -213,6 +218,15 @@
 				4779FD8ECA3354784E256063 /* Pods_Teammate_FinderTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		861B49852022B4AB003BBD9D /* Post Details */ = {
+			isa = PBXGroup;
+			children = (
+				861B49862022B4DA003BBD9D /* PostDetails.storyboard */,
+				861B49882022B4ED003BBD9D /* PostDetailsViewController.swift */,
+			);
+			name = "Post Details";
 			sourceTree = "<group>";
 		};
 		868B66561FBCB343005EE5C0 /* Models */ = {
@@ -344,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56FE8B921EC3A68700F8DCF6 /* LaunchScreen.storyboard in Resources */,
+				861B49872022B4DA003BBD9D /* PostDetails.storyboard in Resources */,
 				86C55D89201785E70001252D /* FUICustomAuthPickerViewController.xib in Resources */,
 				560AC7D21ED7B132003ACE51 /* NewPost.storyboard in Resources */,
 				562C11901ECFB32B0072A5C2 /* PartnerPosts.storyboard in Resources */,
@@ -481,6 +496,7 @@
 				562C11921ECFB4740072A5C2 /* PartnerPostsController.swift in Sources */,
 				868B66581FBCB381005EE5C0 /* Rank.swift in Sources */,
 				56C4040D1ED652F6006AC7E4 /* TestCell.swift in Sources */,
+				861B49892022B4ED003BBD9D /* PostDetailsViewController.swift in Sources */,
 				560D43C01ED2709A00D464A6 /* PartnerPostHeader.swift in Sources */,
 				8624082720168B480090FAA7 /* FUICustomEmailEntryViewController.swift in Sources */,
 				569818EA1ED4A981001EF9F8 /* PartnerPost.swift in Sources */,

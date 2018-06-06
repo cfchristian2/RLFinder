@@ -258,12 +258,7 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
-    func expandPosts(gestureRecognizer: SectionHeaderTap)
-    {
+    func expandPosts(gestureRecognizer: SectionHeaderTap) {
         isHidden[gestureRecognizer.section!] = !isHidden[gestureRecognizer.section!]
         
         var selectedPostArray = [String]()
@@ -307,6 +302,13 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Section: \(indexPath.section)\nRow: \(indexPath.row)")
+        if let cell = postsTable.cellForRow(at: indexPath) as? PartnerPost {
+            toPostDetails(post: cell)
+        }
+    }
+    
     //-------------------------------------------------------------------------------------------//
     // MARK: Scroll View
     
@@ -346,6 +348,15 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     
     //-------------------------------------------------------------------------------------------//
     // MARK: Screen Navigation
+    
+    func toPostDetails(post: PartnerPost) {
+        
+        let vc = PostDetailsViewController()
+        vc.view.backgroundColor = .blue
+        //self.present(vc, animated: true, completion: nil)
+        navigationController?.pushViewController(vc, animated: true)
+        print(post.postBody.text ?? "")
+    }
     
     func toCreatePost() {
         if User.currentUser == nil {
