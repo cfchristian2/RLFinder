@@ -13,14 +13,19 @@ import Firebase
 import FirebaseAuthUI
 import FirebaseFacebookAuthUI
 
-class PartnerPostsController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, FUIAuthDelegate {
-    
+class PartnerPostsController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, FUIAuthDelegate, ButtonReloadsTable {
 
     @IBAction func toSettings(_ sender: Any) {
         toSettings()
     }
+    
     @IBOutlet weak var postsTable: UITableView!
+    
+    var dropDown: DropDownButton!
+    
     var ref: DatabaseReference!
+    
+    var currentSelectedSystem = "PS4"
     
     // This storage will probably change once database is implemented
     var bronzePosts: [String] = []
@@ -68,9 +73,22 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         
         automaticallyAdjustsScrollViewInsets = false
         
-        navigationController?.navigationBar.shadowImage = UIImage()
+        //navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.barStyle = .blackTranslucent
         navigationController?.navigationBar.tintColor = .lightGray
+        
+        dropDown = DropDownButton.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        dropDown.translatesAutoresizingMaskIntoConstraints = false
+        dropDown.setTitle("PS4", for: .normal)
+        dropDown.dropDownView.dropDownOptions = ["PS4", "PC", "Xbox One"]
+        
+        self.view.addSubview(dropDown)
+        
+        dropDown.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        dropDown.centerYAnchor.constraint(equalTo: self.postsTable.topAnchor, constant: -10).isActive = true
+        dropDown.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        dropDown.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        dropDown.delegate = self
         
         getRocketLeagueStats()
     }
@@ -91,8 +109,19 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         championPosts = []
         grandChampionPosts = []
         
-        //  TODO: Change "ps4" to whatever platform user chooses
-        ref.child("ps4").observeSingleEvent(of: .value, with: { (snapshot) in
+        var system = ""
+        switch currentSelectedSystem {
+        case "PS4":
+            system = "ps4"
+        case "PC":
+            system = "pc"
+        case "Xbox One":
+            system = "xboxOne"
+        default:
+            system = ""
+        }
+                
+        ref.child(system).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? [String : Any]
             for (postType, posts) in value! {
                 for (postId, post) in posts as! [String : [String : String]] {
@@ -116,7 +145,11 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
                     }
                 }
             }
-            self.postsTable.reloadData()
+            
+            // Reload table with animation
+            let range = NSMakeRange(0, self.postsTable.numberOfSections)
+            let sections = NSIndexSet(indexesIn: range)
+            self.postsTable.reloadSections(sections as IndexSet, with: .fade)
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -364,7 +397,10 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         }
         
         let storyboard: UIStoryboard = UIStoryboard(name: "NewPost", bundle: nil)
-        let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "NewPostController")
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "NewPostController") as? NewPostController else {
+            return
+        }
+        vc.currentSelectedSystem = currentSelectedSystem
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -459,9 +495,178 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         }
         task.resume()
     }
+    
+    //-------------------------------------------------------------------------------------------//
+    // MARK: Drop Down Functionality
+    func reloadTable(system: String) {
+        currentSelectedSystem = system
+        readDatabase()
+    }
 }
 
 class SectionHeaderTap: UITapGestureRecognizer {
     var section: Int!
     var cell: PartnerPostHeader!
 }
+
+class DropDownButton: UIButton, DropDownProtocol {
+    
+    var dropDownView = DropDownView()
+    
+    var height = NSLayoutConstraint()
+    
+    var isOpen = false
+    
+    var delegate: ButtonReloadsTable!
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.setTitleColor(.white, for: .normal)
+        
+        dropDownView = DropDownView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        dropDownView.translatesAutoresizingMaskIntoConstraints = false
+        dropDownView.delegate = self
+    }
+    
+    override func didMoveToSuperview() {
+        self.superview?.addSubview(dropDownView)
+        self.superview?.bringSubview(toFront: dropDownView)
+        dropDownView.topAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        dropDownView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        dropDownView.widthAnchor.constraint(equalTo: (self.superview?.widthAnchor)!).isActive = true
+        height = dropDownView.heightAnchor.constraint(equalToConstant: 0)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if isOpen {
+            isOpen = false
+            
+            NSLayoutConstraint.deactivate([self.height])
+            self.height.constant = 0
+            NSLayoutConstraint.activate([self.height])
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+                self.dropDownView.center.y -= self.dropDownView.frame.height / 2
+                self.dropDownView.layoutIfNeeded()
+            }, completion: nil)
+        } else {
+            isOpen = true
+            
+            NSLayoutConstraint.deactivate([self.height])
+            self.height.constant = self.dropDownView.tableView.contentSize.height
+            NSLayoutConstraint.activate([self.height])
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
+                self.dropDownView.layoutIfNeeded()
+                self.dropDownView.center.y += self.dropDownView.frame.height / 2
+            }, completion: nil)
+        }
+    }
+    
+    func dropDownClicked(string: String) {
+        self.setTitle(string, for: .normal)
+        self.delegate.reloadTable(system: string)
+        
+        isOpen = false
+        
+        NSLayoutConstraint.deactivate([self.height])
+        self.height.constant = 0
+        NSLayoutConstraint.activate([self.height])
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            self.dropDownView.center.y -= self.dropDownView.frame.height / 2
+            self.dropDownView.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+class DropDownView: UIView, UITableViewDelegate, UITableViewDataSource {
+    var dropDownOptions = [String]()
+    
+    var tableView = UITableView()
+    
+    var delegate: DropDownProtocol!
+    
+    let globalDarkColor = UIColor(displayP3Red: 0.11, green: 0.11, blue: 0.11, alpha: 1)
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.isUserInteractionEnabled = true
+
+        
+        self.addSubview(tableView)
+        
+        tableView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        
+        tableView.backgroundColor = globalDarkColor
+        self.backgroundColor = globalDarkColor
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dropDownOptions.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        
+        cell.textLabel?.text = dropDownOptions[indexPath.row]
+        cell.textLabel?.textColor = .white
+        cell.backgroundColor = globalDarkColor
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.delegate.dropDownClicked(string: dropDownOptions[indexPath.row])
+        self.tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+protocol DropDownProtocol {
+    func dropDownClicked(string: String)
+}
+
+protocol ButtonReloadsTable {
+    func reloadTable(system: String)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

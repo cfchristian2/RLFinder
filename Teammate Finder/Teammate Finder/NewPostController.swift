@@ -16,11 +16,18 @@ class NewPostController: UIViewController, UITextViewDelegate, SJFluidSegmentedC
         postPost()
     }
     @IBOutlet weak var postButton: UIBarButtonItem!
+    
     @IBOutlet weak var rankChooser: SJFluidSegmentedControl!
+    
     @IBOutlet weak var postBody: UITextView!
+    
     var hasEditedText = false
+    
     let placeholder = "Body of post"
+    
     var ref: DatabaseReference!
+    
+    var currentSelectedSystem: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +56,18 @@ class NewPostController: UIViewController, UITextViewDelegate, SJFluidSegmentedC
     
     func postPost() {
         print(ranks[rankChooser.currentSegment].title)
-        let newPostReference = ref.child("ps4").child(ranks[rankChooser.currentSegment].postType).childByAutoId()
+        var system = ""
+        switch currentSelectedSystem {
+        case "PS4":
+            system = "ps4"
+        case "PC":
+            system = "pc"
+        case "Xbox One":
+            system = "xboxOne"
+        default:
+            system = ""
+        }
+        let newPostReference = ref.child(system).child(ranks[rankChooser.currentSegment].postType).childByAutoId()
         newPostReference.setValue(["gameType" : "doubles", "postBody" : postBody.text ?? "", "username" : "bestUser69"])
     }
     

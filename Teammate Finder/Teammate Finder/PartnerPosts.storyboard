@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="q7n-eu-C5I">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="q7n-eu-C5I">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,7 +27,7 @@
             </objects>
             <point key="canvasLocation" x="-873" y="-1"/>
         </scene>
-        <!--Posts-->
+        <!--Partner Posts Controller-->
         <scene sceneID="e2g-hc-pvT">
             <objects>
                 <viewController id="LcV-0p-JDh" customClass="PartnerPostsController" customModule="Teammate_Finder" customModuleProvider="target" sceneMemberID="viewController">
@@ -40,7 +40,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ocA-hv-2M2">
-                                <rect key="frame" x="0.0" y="72" width="375" height="595"/>
+                                <rect key="frame" x="0.0" y="102" width="375" height="565"/>
                                 <color key="backgroundColor" red="0.15684100989999999" green="0.1568752527" blue="0.15683883430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" white="0.2162543403138889" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -189,12 +189,12 @@
                         <color key="backgroundColor" red="0.15684100985527039" green="0.15687525272369385" blue="0.15683883428573608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ocA-hv-2M2" firstAttribute="leading" secondItem="PiL-UE-7LM" secondAttribute="leading" id="7xf-Zm-nds"/>
-                            <constraint firstItem="ocA-hv-2M2" firstAttribute="top" secondItem="p5y-dI-ART" secondAttribute="bottom" constant="8" id="VDH-5K-WBa"/>
+                            <constraint firstItem="ocA-hv-2M2" firstAttribute="top" secondItem="p5y-dI-ART" secondAttribute="bottom" constant="38" id="VDH-5K-WBa"/>
                             <constraint firstItem="yQU-nE-XDl" firstAttribute="top" secondItem="ocA-hv-2M2" secondAttribute="bottom" id="ofJ-7s-WC8"/>
                             <constraint firstAttribute="trailing" secondItem="ocA-hv-2M2" secondAttribute="trailing" id="t89-F8-pi7"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Posts" id="deT-DM-CcW">
+                    <navigationItem key="navigationItem" id="deT-DM-CcW">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="settings" id="dyS-FP-1gA">
                             <inset key="imageInsets" minX="0.0" minY="-1" maxX="0.0" maxY="-12"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
