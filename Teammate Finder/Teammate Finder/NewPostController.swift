@@ -19,7 +19,11 @@ class NewPostController: UIViewController, UITextViewDelegate, SJFluidSegmentedC
     
     @IBOutlet weak var rankChooser: SJFluidSegmentedControl!
     
+    @IBOutlet weak var gameTypeChooser: SJFluidSegmentedControl!
+    
     @IBOutlet weak var postBody: UITextView!
+    
+    let gameTypes = ["solo", "doubles", "standard", "soloStandard"]
     
     var hasEditedText = false
     
@@ -43,6 +47,7 @@ class NewPostController: UIViewController, UITextViewDelegate, SJFluidSegmentedC
         postBody.textColor = .lightGray
         
         rankChooser.dataSource = self
+        gameTypeChooser.dataSource = self
         
     }
 
@@ -67,8 +72,18 @@ class NewPostController: UIViewController, UITextViewDelegate, SJFluidSegmentedC
         default:
             system = ""
         }
-        let newPostReference = ref.child(system).child(ranks[rankChooser.currentSegment].postType).childByAutoId()
-        newPostReference.setValue(["gameType" : "doubles", "postBody" : postBody.text ?? "", "username" : "bestUser69"])
+        
+        guard let chosenRank = ranks[rankChooser.currentSegment].postType else {
+            return
+        }
+        let chosenGameType = gameTypes[gameTypeChooser.currentSegment]
+        
+        print(system)
+        print(chosenRank)
+        print(chosenGameType)
+        
+        let newPostReference = ref.child(system).child(chosenGameType).child(chosenRank).childByAutoId()
+        newPostReference.setValue(["gameType" : chosenGameType, "postBody" : postBody.text ?? "", "username" : "bestUser69"])
     }
     
     //-------------------------------------------------------------------------------------------//
@@ -125,41 +140,44 @@ class NewPostController: UIViewController, UITextViewDelegate, SJFluidSegmentedC
                          Rank(title: "Grand Champion", icon: UIImage(named: "grand champion")!, color: UIColor(red: 1.0, green: 0.3, blue: 1.0, alpha: 0.7), postType: "grandChampionPosts")]
 
     func numberOfSegmentsInSegmentedControl(_ segmentedControl: SJFluidSegmentedControl) -> Int {
-        return 7
+        if segmentedControl == rankChooser {
+            return 7
+        } else if segmentedControl == gameTypeChooser {
+            return 4
+        } else {
+            return 1
+        }
     }
     
     func segmentedControl(_ segmentedControl: SJFluidSegmentedControl,
                           attributedTitleForSegmentAtIndex index: Int) -> NSAttributedString? {
-        let attachment = NSTextAttachment()
-        attachment.image = ranks[index].icon
-        attachment.bounds = CGRect(x: attachment.bounds.minX, y: attachment.bounds.minY, width: 35, height: 35)
-        return NSAttributedString(attachment: attachment)
+        if segmentedControl == rankChooser {
+            let attachment = NSTextAttachment()
+            attachment.image = ranks[index].icon
+            attachment.bounds = CGRect(x: attachment.bounds.minX, y: attachment.bounds.minY, width: 35, height: 35)
+            
+            return NSAttributedString(attachment: attachment)
+        } else if segmentedControl == gameTypeChooser {
+            let gameTypes = ["Singles", "Doubles", "Standard", "Solo Standard"]
+            let attrString = NSAttributedString(string: gameTypes[index])
+            
+            return attrString
+        } else {
+            return NSAttributedString()
+        }
     }
     
     func segmentedControl(_ segmentedControl: SJFluidSegmentedControl, gradientColorsForSelectedSegmentAtIndex index: Int) -> [UIColor] {
-        var colors = [UIColor]()
-        for rank in ranks {
-            colors.append(rank.color)
+        if segmentedControl == rankChooser {
+            var colors = [UIColor]()
+            for rank in ranks {
+                colors.append(rank.color)
+            }
+            return [ranks[index].color]
+        } else if segmentedControl == gameTypeChooser {
+            return [UIColor(red: 0.1, green: 0.1, blue: 1.0, alpha: 0.5)]
+        } else {
+            return [UIColor.black]
         }
-        return [ranks[index].color]
-    }
-    
-    // Might not use this
-    func hexStringToUIColor (hex:String) -> UIColor {
-        let cString:String = hex.uppercased()
-        
-        if ((cString.count) != 6) {
-            return UIColor.gray
-        }
-        
-        var rgbValue:UInt32 = 0
-        Scanner(string: cString).scanHexInt32(&rgbValue)
-        
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
     }
 }

@@ -21,11 +21,15 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var postsTable: UITableView!
     
-    var dropDown: DropDownButton!
+    var systemDropDown: DropDownButton!
+    
+    var gameTypeDropDown: DropDownButton!
     
     var ref: DatabaseReference!
     
     var currentSelectedSystem = "PS4"
+    
+    var currentSelectedGameType = "Duel"
     
     // This storage will probably change once database is implemented
     var bronzePosts: [String] = []
@@ -77,18 +81,21 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         navigationController?.navigationBar.barStyle = .blackTranslucent
         navigationController?.navigationBar.tintColor = .lightGray
         
-        dropDown = DropDownButton.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        dropDown.translatesAutoresizingMaskIntoConstraints = false
-        dropDown.setTitle("PS4", for: .normal)
-        dropDown.dropDownView.dropDownOptions = ["PS4", "PC", "Xbox One"]
+        systemDropDown = DropDownButton.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        systemDropDown.translatesAutoresizingMaskIntoConstraints = false
+        systemDropDown.setTitle("PS4", for: .normal)
+        systemDropDown.dropDownView.dropDownOptions = ["PS4", "PC", "Xbox One"]
         
-        self.view.addSubview(dropDown)
+        gameTypeDropDown = DropDownButton.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        gameTypeDropDown.translatesAutoresizingMaskIntoConstraints = false
+        gameTypeDropDown.setTitle("Duel", for: .normal)
+        gameTypeDropDown.dropDownView.dropDownOptions = ["Duel", "Doubles", "Standard", "Solo Standard"]
         
-        dropDown.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        dropDown.centerYAnchor.constraint(equalTo: self.postsTable.topAnchor, constant: -10).isActive = true
-        dropDown.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        dropDown.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        dropDown.delegate = self
+        self.view.addSubview(systemDropDown)
+        self.view.addSubview(gameTypeDropDown)
+        
+        dropDownLayout(dropDown: systemDropDown, leftSide: true)
+        dropDownLayout(dropDown: gameTypeDropDown, leftSide: false)
         
         getRocketLeagueStats()
     }
@@ -120,12 +127,22 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         default:
             system = ""
         }
+        
+        var gameType = ""
+        if currentSelectedGameType == "Solo Standard" {
+            gameType = "soloStandard"
+        } else {
+            gameType = currentSelectedGameType.lowercased()
+        }
                 
-        ref.child(system).observeSingleEvent(of: .value, with: { (snapshot) in
-            let value = snapshot.value as? [String : Any]
-            for (postType, posts) in value! {
+        ref.child(system).child(gameType).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let value = snapshot.value as? [String : Any] else {
+                return
+            }
+            
+            for (postRank, posts) in value {
                 for (postId, post) in posts as! [String : [String : String]] {
-                    switch (postType) {
+                    switch (postRank) {
                     case "bronzePosts":
                         self.bronzePosts.append(post["postBody"] ?? postId)
                     case "silverPosts":
@@ -475,7 +492,7 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
         task.resume()
     }
     
-    func getPlatform () {
+    func getPlatform() {
         let string = "https://api.rocketleaguestats.com/v1/data/platforms"
         let url = NSURL(string: string)
         let request = NSMutableURLRequest(url: url! as URL)
@@ -498,9 +515,34 @@ class PartnerPostsController: UIViewController, UITableViewDataSource, UITableVi
     
     //-------------------------------------------------------------------------------------------//
     // MARK: Drop Down Functionality
-    func reloadTable(system: String) {
-        currentSelectedSystem = system
-        readDatabase()
+    func reloadTable(string: String, dropDownButton: DropDownButton) {
+        switch dropDownButton {
+        case systemDropDown:
+            currentSelectedSystem = string
+            readDatabase()
+        case gameTypeDropDown:
+            currentSelectedGameType = string
+            readDatabase()
+        default:
+            return
+        }
+        
+    }
+    
+    func dropDownLayout(dropDown: DropDownButton, leftSide: Bool) {
+        dropDown.centerYAnchor.constraint(equalTo: self.postsTable.topAnchor, constant: -10).isActive = true
+        dropDown.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        dropDown.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        dropDown.delegate = self
+        
+        var offset: CGFloat = 0
+        if leftSide {
+            offset = -(self.view.bounds.midX / 2)
+        } else {
+            offset = self.view.bounds.midX / 2
+        }
+        
+        dropDown.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: offset).isActive = true
     }
 }
 
@@ -533,7 +575,7 @@ class DropDownButton: UIButton, DropDownProtocol {
         self.superview?.addSubview(dropDownView)
         self.superview?.bringSubview(toFront: dropDownView)
         dropDownView.topAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        dropDownView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        dropDownView.centerXAnchor.constraint(equalTo: (self.superview?.centerXAnchor)!).isActive = true
         dropDownView.widthAnchor.constraint(equalTo: (self.superview?.widthAnchor)!).isActive = true
         height = dropDownView.heightAnchor.constraint(equalToConstant: 0)
     }
@@ -566,7 +608,7 @@ class DropDownButton: UIButton, DropDownProtocol {
     
     func dropDownClicked(string: String) {
         self.setTitle(string, for: .normal)
-        self.delegate.reloadTable(system: string)
+        self.delegate.reloadTable(string: string, dropDownButton: self)
         
         isOpen = false
         
@@ -648,7 +690,7 @@ protocol DropDownProtocol {
 }
 
 protocol ButtonReloadsTable {
-    func reloadTable(system: String)
+    func reloadTable(string: String, dropDownButton: DropDownButton)
 }
 
 

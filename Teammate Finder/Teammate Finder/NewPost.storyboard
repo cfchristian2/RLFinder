@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kBI-Oq-PbY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kBI-Oq-PbY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -67,11 +67,27 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2m-ID-MpT" customClass="SJFluidSegmentedControl" customModule="SJFluidSegmentedControl">
+                                <rect key="frame" x="15.5" y="192" width="343" height="45"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="61r-fE-1yf"/>
+                                    <constraint firstAttribute="width" constant="343" id="tsN-OK-Bgc"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="f2m-ID-MpT" firstAttribute="top" secondItem="ONI-NJ-4AT" secondAttribute="bottom" constant="21" id="2TW-QM-Xa0"/>
                             <constraint firstItem="NKf-ec-FTb" firstAttribute="top" secondItem="0Qd-SL-ons" secondAttribute="bottom" constant="19" id="2qq-kG-hpd"/>
                             <constraint firstItem="PEc-CC-1Oz" firstAttribute="trailing" secondItem="I0x-as-7fl" secondAttribute="trailingMargin" id="9wI-Xy-wLD"/>
+                            <constraint firstItem="PEc-CC-1Oz" firstAttribute="top" secondItem="f2m-ID-MpT" secondAttribute="bottom" constant="28" id="BOS-iC-llV"/>
+                            <constraint firstItem="f2m-ID-MpT" firstAttribute="centerX" secondItem="I0x-as-7fl" secondAttribute="centerX" id="HHa-zD-7Oq"/>
                             <constraint firstItem="PEc-CC-1Oz" firstAttribute="centerX" secondItem="I0x-as-7fl" secondAttribute="centerX" id="J1i-d1-OBA"/>
                             <constraint firstItem="ONI-NJ-4AT" firstAttribute="top" secondItem="NKf-ec-FTb" secondAttribute="bottom" constant="8" id="Y4c-bT-JNV"/>
                             <constraint firstItem="ONI-NJ-4AT" firstAttribute="centerX" secondItem="I0x-as-7fl" secondAttribute="centerX" id="dpV-FJ-kWa"/>
@@ -90,6 +106,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="gameTypeChooser" destination="f2m-ID-MpT" id="mC5-8o-wCs"/>
                         <outlet property="postBody" destination="PEc-CC-1Oz" id="jtE-8S-2Bt"/>
                         <outlet property="postButton" destination="Pda-rG-8ff" id="JDT-gp-1K6"/>
                         <outlet property="rankChooser" destination="ONI-NJ-4AT" id="bKj-w8-5S6"/>

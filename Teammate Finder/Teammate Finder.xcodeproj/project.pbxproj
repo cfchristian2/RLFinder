@@ -13,6 +13,7 @@
 		560D43C01ED2709A00D464A6 /* PartnerPostHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560D43BF1ED2709A00D464A6 /* PartnerPostHeader.swift */; };
 		562C11901ECFB32B0072A5C2 /* PartnerPosts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 562C118F1ECFB32B0072A5C2 /* PartnerPosts.storyboard */; };
 		562C11921ECFB4740072A5C2 /* PartnerPostsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562C11911ECFB4740072A5C2 /* PartnerPostsController.swift */; };
+		5649E5C020DC991500779532 /* HexConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5649E5BF20DC991500779532 /* HexConverter.swift */; };
 		567BA5101ED8CD3400DD821E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 567BA50F1ED8CD3400DD821E /* GoogleService-Info.plist */; };
 		569818EA1ED4A981001EF9F8 /* PartnerPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569818E91ED4A981001EF9F8 /* PartnerPost.swift */; };
 		56C4040D1ED652F6006AC7E4 /* TestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C4040C1ED652F6006AC7E4 /* TestCell.swift */; };
@@ -61,6 +62,7 @@
 		560D43BF1ED2709A00D464A6 /* PartnerPostHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerPostHeader.swift; sourceTree = "<group>"; };
 		562C118F1ECFB32B0072A5C2 /* PartnerPosts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PartnerPosts.storyboard; sourceTree = "<group>"; };
 		562C11911ECFB4740072A5C2 /* PartnerPostsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerPostsController.swift; sourceTree = "<group>"; };
+		5649E5BF20DC991500779532 /* HexConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexConverter.swift; sourceTree = "<group>"; };
 		567BA50F1ED8CD3400DD821E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		569818E91ED4A981001EF9F8 /* PartnerPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerPost.swift; sourceTree = "<group>"; };
 		56C4040C1ED652F6006AC7E4 /* TestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCell.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				5606FA221ED8BE9900351D28 /* testPhoto.jpg */,
 				56FE8B931EC3A68700F8DCF6 /* Info.plist */,
 				567BA50F1ED8CD3400DD821E /* GoogleService-Info.plist */,
+				5649E5BF20DC991500779532 /* HexConverter.swift */,
 			);
 			path = "Teammate Finder";
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5649E5C020DC991500779532 /* HexConverter.swift in Sources */,
 				562C11921ECFB4740072A5C2 /* PartnerPostsController.swift in Sources */,
 				868B66581FBCB381005EE5C0 /* Rank.swift in Sources */,
 				56C4040D1ED652F6006AC7E4 /* TestCell.swift in Sources */,
